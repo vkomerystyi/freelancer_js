@@ -1,5 +1,5 @@
 "use strict"
-
+/* 
 //1. Дано ширину екрана та кількість елементів, які повинні бути відображені у рядку. Визначити ширину елементів, які повинні бути відображені у цьому рядку.
 
 const widthMonitor = 1920
@@ -63,5 +63,56 @@ const accruedUser = salaryWorkDone - salaryWorkDone * 0.2
 
 console.log("---платню одержить на фірмі")
 console.log(accruedUser)
-
+ */
 //6. Дано три дійсні змінні a, b і c.  Скласти  алгоритм, який міняє місцями значення цих змінних наступним чином: змінна a набуває значення змінної b, змінна b набуває значення змінної c, а змінна  c – попереднє значення змінної a.
+
+let numA = 5
+let numB = 60
+let numC = 300
+
+console.log("--- значення змінних")
+console.log(`змінна a ${numA}`)
+console.log(`змінна b ${numB}`)
+console.log(`змінна c ${numC}`)
+
+const temp = numA
+numA = numB
+numB = numC
+numC = temp
+
+console.log("--- алгоритм, який міняє місцями значення цих змінних")
+console.log(`змінна a ${numA}`)
+console.log(`змінна b ${numB}`)
+console.log(`змінна c ${numC}`)
+
+//7. Скласти алгоритм, який обчислює цілу і дробову частину даного числа х. Наприклад: число 23,56  => ціла: 23, дробова: 0,56.
+
+let numX = 23.56
+
+const calculatesTheWhole = Math.floor(numX)
+const fractionalPart = numX - calculatesTheWhole
+
+console.log("--- алгоритм, який обчислює цілу і дробову частину даного числа")
+console.log(`число: ${numX}  ціла: ${calculatesTheWhole} дробова частина: ${Math.round(fractionalPart * 100) / 100}`)
+
+//8. Розробити програму (не використовувати if), яка за номером року Y визначає номер століття C (врахувати, що початком XX століття був 1901, а не 1900 рік).
+
+const centuryNumber = 1901
+
+const century = Math.ceil(centuryNumber / 100)
+console.log("за номером року Y визначає номер століття C")
+console.log(century)
+
+//9. Скласти програму для розв’язування задачі: йде N-а секунда доби, визначити скільки повних годин і повних хвилин пройшло до цього моменту.
+
+const second = 351456
+
+const fullMinutes = Math.floor(second / 60)
+const fullHours = Math.floor(second / 3600)
+
+console.log("--- повних хвилин пройшло ")
+console.log(fullMinutes)
+console.log("--- повних годин пройшло ")
+console.log(fullHours)
+
+//10. З клавіатури вводиться кількість монет номіналом 1 копійка. Визначити скільки гривень і копійок є у даній сумі . Наприклад, дано 245 копійок, а вивести 2 грн 45 копійок.
