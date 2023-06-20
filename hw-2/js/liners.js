@@ -126,6 +126,54 @@ console.log(`${resultGrnMoney} грн ${resultCopMoney} копійок`)
 
 //11. Дано поточну кількість годи, хвилин, секунд (як на годиннику). Визначити 1) яка кількість секунд буде на годиннику через N секунд.2) яка кількість хвилин буде на годиннику через N секунд, X хвилин.
 
-const userTimeHour = 12
-const userTimeMinute = 12
-const userTimeSecond = 12
+const createHour = 12
+const createMinute = 12
+const createSecond = 12
+
+const addSecondN = 500
+const addSecondN1 = 1500
+const addMinutX = 2
+
+const NSecond = (createSecond + addSecondN) % 60
+console.log("--- секунд буде на годиннику через N секунд")
+console.log(NSecond)
+
+const totalSecond = createHour * 3600 + createMinute * 60 + addMinutX * 60 + createSecond + addSecondN1
+const XMinut = Math.floor(totalSecond / 60) % 60
+console.log("--- хвилин буде на годиннику через N секунд, X хвилин")
+console.log(XMinut)
+
+//12. З клавіатури вводиться кількість монет номіналом 2 копійки (5коп, 25коп, 50 коп). Визначити скільки гривень і копійок є у даній сумі
+
+const coin2 = 2
+const coin5 = 5
+const coin25 = 25
+const coin50 = 50
+
+const countUserCoin2 = 250
+const countUserCoin5 = 50
+const countUserCoin25 = 17
+const countUserCoin50 = 11
+
+const sumCoin2 = coin2 * countUserCoin2
+const sumCoin5 = coin5 * countUserCoin5
+const sumCoin25 = coin25 * countUserCoin25
+const sumCoin50 = coin50 * countUserCoin50
+
+const totalSumCoin = sumCoin2 + sumCoin5 + sumCoin25 + sumCoin50
+
+const grnCount = Math.floor(totalSumCoin / 100)
+const coinCount = totalSumCoin % 100
+
+console.log("--- скільки гривень і копійок є у даній сумі")
+console.log(`${grnCount} гривень ${coinCount} копійок`)
+
+//13. Визначити скільки повних тижнів є у вказаній кількості днів.
+
+const dayUser = 38
+const weekFull = Math.floor(dayUser / 7)
+
+console.log("--- скільки повних тижнів є у вказаній кількості днів ")
+console.log(weekFull)
+
+//14. З клавіатури вводиться номер дня тижня (від 1 до 7). Визначити який буде день тижня через N днів
