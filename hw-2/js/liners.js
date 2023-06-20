@@ -177,3 +177,33 @@ console.log("--- скільки повних тижнів є у вказаній
 console.log(weekFull)
 
 //14. З клавіатури вводиться номер дня тижня (від 1 до 7). Визначити який буде день тижня через N днів
+const minDayWeek = 1
+const maxDayWeek = 7
+const numberDay = 3
+const numberN = 113
+// формула (curValue + N)%(max - min + 1) , якщо min = 0
+// формула (curValue  - min + N)%(max - min + 1) + min , якщо min = 1
+const searchDay = ((numberDay - minDayWeek + numberN) % (maxDayWeek - minDayWeek + 1)) + minDayWeek
+console.log("--- номер дня тижня (від 1 до 7). Визначити який буде день тижня через N днів")
+console.log(searchDay)
+
+//15. З клавіатури вводиться кількість місяців, які пройшли від деякого моменту часу. Вивести повну кількість років і місяців. Наприклад, дано 28 місяців, а вивести 2 роки і 4 місяці.
+
+const countMonth = 28
+const currentYaer = Math.floor(countMonth / 12)
+const currentMonth = countMonth % 12
+
+console.log("--- повну кількість років і місяців ")
+console.log(`${currentYaer} роки ${currentMonth} місяці.`)
+
+//16. З клавіатури вводиться номер місяця. Визначити, який буде місяць через вказану кількість N місяців.
+
+const userCountMonth = 2
+const monthN = 135
+
+const searchMonth = ((userCountMonth - 1 + monthN) % (12 - 1 + 1)) + 1
+
+console.log("--- який буде місяць через вказану кількість N")
+console.log(searchMonth)
+
+//17. Зашифрувати один введений англійський символ у верхньому регістрі (один з символів: A,B,…Z)  методом зміщення (шифр Цезаря).
