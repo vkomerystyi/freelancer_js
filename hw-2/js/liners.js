@@ -121,7 +121,7 @@ const countMoney = 24505
 
 const resultGrnMoney = Math.floor(countMoney / 100)
 const resultCopMoney = countMoney % 100
-
+console.log("--- дано 245 копійок, а вивести 2 грн 45 копійок")
 console.log(`${resultGrnMoney} грн ${resultCopMoney} копійок`)
 
 //11. Дано поточну кількість годи, хвилин, секунд (як на годиннику). Визначити 1) яка кількість секунд буде на годиннику через N секунд.2) яка кількість хвилин буде на годиннику через N секунд, X хвилин.
