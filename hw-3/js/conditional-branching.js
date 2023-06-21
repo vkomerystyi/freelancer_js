@@ -8,12 +8,12 @@
 const nameUser1 = prompt("Введіть ім'я першої дитини")
 const nameUser2 = prompt("Введіть ім'я другої дитини")
 
-const countUser1 = parseInt(prompt("Кількість цукерок першої дитини"))
-const countUser2 = parseInt(prompt("Кількість цукерок другої дитини"))
+const countUser1 = parseInt(prompt(`Кількість цукерок ${nameUser1}`))
+const countUser2 = parseInt(prompt(`Кількість цукерок ${nameUser2}`))
 
-if (countUser1 > countUser2) console.log(`${nameUser1} - цукерок є більшe`)
-else if (countUser1 === countUser2) console.log(`${nameUser1} і ${nameUser2} кількість однакова`)
-else console.log(`${nameUser2} - цукерок є більшe`)
+if (countUser1 > countUser2) alert(`${nameUser1} - цукерок є більшe`)
+else if (countUser1 === countUser2) alert(`${nameUser1} і ${nameUser2} кількість однакова`)
+else alert(`${nameUser2} - цукерок є більшe`)
 
 /* ---------------------------------------------------------- */
 /* - - -  2  - - -  */
@@ -50,12 +50,12 @@ const maxValue = 5
 const minValue = 1
 const randomNumber = Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue
 
-const userAnswer1 = parseInt(prompt("Введіть перше число"))
+const userAnswer1 = parseInt(prompt("Вгадайте число від 1 до 5"))
 if (randomNumber === userAnswer1) {
     alert(`Ви вгадали: ${randomNumber}`)
 } else {
     alert(`Не вгадали`)
-    const userAnswer2 = parseInt(prompt("Введіть друге число"))
+    const userAnswer2 = parseInt(prompt("Ще спроба! Вгадайте число від 1 до 5"))
     if (randomNumber === userAnswer2) {
         alert(`Ви вгадали: ${randomNumber}`)
     } else {
@@ -88,7 +88,7 @@ else alert("пенсіонером")
 
 //5. З клавіатури вводиться назва категорії водія (А-мотоцикл, В-легковий автомобіль, С-вантажний автомобіль). Вивести на екран назву транспортного засобу, яким він може керувати.
 
-const userDriveCar = prompt("А - мотоцикл, В - легковий автомобіль, С - вантажний автомобіль")
+const userDriveCar = prompt("Ведіть назву категориії: А , В , С ")
 
 if (!userDriveCar) alert("Ні чого не ввели")
 else if (userDriveCar === "А") alert("мотоцикл")
@@ -119,4 +119,18 @@ else if (weekNumber === friday) alert("П'ятниця")
 else if (weekNumber === saturday) alert("Субота")
 else if (weekNumber === sanday) alert("Неділя")
 else alert("Не коректный день неділі!")
+
+/* ---------------------------------------------------------- */
+/* - - -  6  - - -  */
+/* ---------------------------------------------------------- */
+
 //7. З клавіатури вводиться номер місяця. Вивести до якої пори він відноситься
+
+const numberMonths = parseInt(prompt("номер місяця"))
+
+if (!numberMonths) alert("Нічого не ввели!")
+else if (numberMonths < 2 || numberMonths === 12) alert("Зима")
+else if (numberMonths < 6) alert("Весна")
+else if (numberMonths < 9) alert("Літо")
+else if (numberMonths < 12) alert("Осінь")
+else alert("Не коректний номер місяць")
