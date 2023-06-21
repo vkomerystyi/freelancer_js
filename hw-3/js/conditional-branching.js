@@ -102,4 +102,21 @@ else alert("не має категорії")
 
 //6. З клавіатури вводиться номер дня тижня. Вивести на екран назву дня.
 
+const weekNumber = parseInt(prompt("номер дня тижня"))
+const monday = 1
+const tuesday = 2
+const wednesday = 3
+const thursday = 4
+const friday = 5
+const saturday = 6
+const sanday = 7
+if (!weekNumber) alert("Нічого не ввели!")
+else if (weekNumber === monday) alert("Понеділок")
+else if (weekNumber === tuesday) alert("Вівторок")
+else if (weekNumber === wednesday) alert("Среда")
+else if (weekNumber === thursday) alert("Четверг")
+else if (weekNumber === friday) alert("П'ятниця")
+else if (weekNumber === saturday) alert("Субота")
+else if (weekNumber === sanday) alert("Неділя")
+else alert("Не коректный день неділі!")
 //7. З клавіатури вводиться номер місяця. Вивести до якої пори він відноситься
