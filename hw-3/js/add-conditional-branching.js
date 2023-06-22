@@ -72,7 +72,27 @@ if (!answerUser1 || !answerUser2) {
 =============================================================================== */
 const lengthField = parseInt(prompt("Кількість квадратів в полі гри"))
 const positionShip = Math.floor(Math.random() * lengthField) + 1
+const userShot = parseInt(prompt(`Перший постріл від 1 до ${lengthField}`))
 
+if (userNumber !== positionShip) {
+    alert("промазав")
+    const userShot2 = parseInt(prompt(`Другий постріл від 1 до ${lengthField}`))
+    if (userShot2 === positionShip) {
+        alert("корабель потоплено")
+    } else {
+        alert("промазав")
+    }
+} else if (userShot === positionShip) {
+    alert("корабель потоплено")
+} else if (userShot - 1 <= positionShip && positionShip <= userShot + 1) {
+    alert("корабель пошкоджено")
+    const userShot2 = parseInt(prompt(`Другий постріл від 1 до ${lengthField}`))
+    if (userShot2 === positionShip) {
+        alert("корабель потоплено")
+    } else {
+        alert("промазав")
+    }
+}
 /* ===============================================================================
 Задача 5. 
 Модифікувати попередню задачу з можливістю після пострілу переміщення 
