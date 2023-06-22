@@ -21,12 +21,13 @@ else alert("вибір тільки від 1 до 3")
 Користувач вводить число і виграє, якщо число знаходиться у цьому проміжку, 
 або розташоване від нього (від лівого або правого краю) не більше ніж на 10.
 =============================================================================== */
-let randomNumber = Math.floor(Math.random() * (25 - 1 + 1)) + 1
-let userNumber = parseInt(prompt("Вгадайте число від 1 до 100"))
-
+const randomNumber = Math.floor(Math.random() * (25 - 1 + 1)) + 1
+const userNumber = parseInt(prompt("Вгадайте число від 1 до 100"))
+const userNumberless10 = userNumber - 10
+const userNumberBig10 = userNumber + 10
 if (!userNumber) {
     alert("Нічого не ввели")
-} else if (userNumber >= randomNumber - 10 && userNumber <= randomNumber + 10) {
+} else if (randomNumber >= userNumberless10 && userNumberBig10 >= randomNumber) {
     alert(`Загадане число ${randomNumber} в проміжку -+ 10 від вашого`)
 } else {
     alert(`Наступоного разу вам пощастить. Загадане число було ${randomNumber}`)
@@ -37,6 +38,22 @@ if (!userNumber) {
 Двоє користувачів надають свої відповіді. 
 Виграє той, у кого число знаходиться ближче до загаданого комп'ютером числа.
  =============================================================================== */
+const randomNum = Math.floor(Math.random() * 10) + 1
+const answerUser1 = parseInt(prompt("Число 1-го користувача"))
+const answerUser2 = parseInt(prompt("Число 2-го користувача"))
+
+const user1 = Math.abs(randomNum - answerUser1)
+const user2 = Math.abs(randomNum - answerUser2)
+
+if (!answerUser1 || !answerUser2) {
+    alert("Нічого не ввели")
+} else if (user1 < user2) {
+    alert(`Виграє 1-ший користувач с відповідь'ю: ${answerUser1} загадане число: ${randomNum}`)
+} else if (user2 < user1) {
+    alert(`Виграє 2-ший користувач с відповідь'ю: ${answerUser2} загадане число: ${randomNum} `)
+} else {
+    alert("Ніч'я")
+}
 
 /* ===============================================================================
 Задача 4. 
@@ -53,6 +70,8 @@ if (!userNumber) {
 де знаходиться корабель, то корабель пошкоджено (про це повідомляємо користувача).
 За два постріли спробувати потопити корабель.
 =============================================================================== */
+const lengthField = parseInt(prompt("Кількість квадратів в полі гри"))
+const positionShip = Math.floor(Math.random() * lengthField) + 1
 
 /* ===============================================================================
 Задача 5. 
