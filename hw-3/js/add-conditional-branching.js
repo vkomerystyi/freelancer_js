@@ -91,7 +91,34 @@ if (Math.abs(userShot - positionShip) <= 1) {
 корабля у випадковим чином вибрану сусідню клітинку 
 (якщо звичайно корабель не було потоплено за першим разом).
 =============================================================================== */
+const length = parseInt(prompt("Кількість квадратів в полі гри"))
+let ship = Math.floor(Math.random() * length) + 1
+const shot = parseInt(prompt(`Перший постріл від 1 до ${length}`))
 
+if (Math.abs(shot - ship) <= 1) {
+    alert("корабель пошкоджено")
+    const shot2 = parseInt(prompt(`Другий постріл від 1 до ${length}`))
+    shot2 === ship ? alert("корабель потоплено") : alert("промазав")
+} else if (shot === ship) {
+    alert("корабель потоплено")
+} else {
+    alert("промазав")
+    if (ship > 1 && ship < length - 1) {
+        const step = Math.random(Math.random())
+        const plusStep = step === 0 ? -1 : 1
+        ship += plusStep
+        const shot2 = parseInt(prompt(`Другий постріл від 1 до ${length}`))
+        shot2 === ship ? alert("корабель потоплено") : alert("промазав")
+    } else if (ship === 0) {
+        ship += 1
+        const shot2 = parseInt(prompt(`Другий постріл від 1 до ${length}`))
+        shot2 === ship ? alert("корабель потоплено") : alert("промазав")
+    } else {
+        ship -= 1
+        const shot2 = parseInt(prompt(`Другий постріл від 1 до ${length}`))
+        shot2 === ship ? alert("корабель потоплено") : alert("промазав")
+    }
+}
 /* ===============================================================================
 Задача 6. 
 Полювання. Заєць знаходиться у верхньому лівому кутку поля. 
