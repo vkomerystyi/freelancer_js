@@ -129,7 +129,25 @@ if (Math.abs(shot - ship) <= 1) {
 Якщо заєць потрапляє у пастку, то користувач виграв і отримав 100 балів. 
 Якщо користувач зловить зайця за другою спробою, то одержує 50 балів. 
 =============================================================================== */
+const min = 1
+const max = 2
+const randomX = Math.floor(Math.random() * (max - min + 1)) + min
+const randomY = Math.floor(Math.random() * (max - min + 1)) + min
 
+const userX = parseInt(prompt("1 спроба номер рядка х: "))
+const userY = parseInt(prompt("1 спроба номер стовпця y: "))
+
+if (randomX === userX && randomY === userY) {
+    alert("то користувач виграв і отримав 100 балів")
+} else {
+    const userX2 = parseInt(prompt("2 спроба номер рядка х: "))
+    const userY2 = parseInt(prompt("2 спроба номер стовпця y: "))
+    if (randomX === userX2 && randomY === userY2) {
+        alert("користувач зловить зайця за другою спробою, то одержує 50 балів")
+    } else {
+        alert("не піймали")
+    }
+}
 /* ===============================================================================
 Задача 7. 
 Гра в кості. Правила гри:
