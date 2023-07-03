@@ -134,18 +134,19 @@ const max = 2
 const randomX = Math.floor(Math.random() * (max - min + 1)) + min
 const randomY = Math.floor(Math.random() * (max - min + 1)) + min
 
-const userX = parseInt(prompt("1 спроба номер рядка х: "))
-const userY = parseInt(prompt("1 спроба номер стовпця y: "))
+const userX = parseInt(prompt("Користувач ставить пастку вказуючи номер рядка від 1 до 2: "))
+const userY = parseInt(prompt("Користувач ставить пастку вказуючи номер стовпця від 1 до 2: "))
 
 if (randomX === userX && randomY === userY) {
-    alert("то користувач виграв і отримав 100 балів")
+    alert("Користувач виграв і отримав 100 балів")
 } else {
-    const userX2 = parseInt(prompt("2 спроба номер рядка х: "))
-    const userY2 = parseInt(prompt("2 спроба номер стовпця y: "))
+    alert("Не піймав. Друга спроба:")
+    const userX2 = parseInt(prompt("Користувач ставить пастку вказуючи номер рядка від 1 до 2: "))
+    const userY2 = parseInt(prompt("Користувач ставить пастку вказуючи номер стовпця від 1 до 2: "))
     if (randomX === userX2 && randomY === userY2) {
-        alert("користувач зловить зайця за другою спробою, то одержує 50 балів")
+        alert("Користувач зловить зайця за другою спробою, то одержує 50 балів")
     } else {
-        alert("не піймали")
+        alert("Не піймав")
     }
 }
 /* ===============================================================================
