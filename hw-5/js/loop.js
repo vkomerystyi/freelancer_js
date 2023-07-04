@@ -54,3 +54,15 @@ for (let i = 0; i < 10; i++) {
     divInput.append(div)
 }
 /* Задача 3. Вивести таблицю з одним рядком і  7 стовпцями. */
+const tableDiv = document.querySelector(".main__table")
+const table = document.createElement("table")
+table.className = "table-row"
+const tr = document.createElement("tr")
+for (let i = 0; i < 7; i++) {
+    const td = document.createElement("td")
+    td.innerText = `${i + 1}`
+    tr.append(td)
+}
+table.append(tr)
+tableDiv.append(table)
+/* Задача 4. Вивести таблицю з 3 рядків і 7 стовпців */

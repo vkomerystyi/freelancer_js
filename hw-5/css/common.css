@@ -92,3 +92,19 @@ input {
 .input-body:last-child {
     margin-bottom: 0px;
 }
+/* ------ */
+.main__table {
+    padding: 15px;
+}
+.table-row {
+    border: 3px solid #4caf50;
+    border-collapse: collapse;
+}
+.table-row td {
+    background-color: green;
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+    border: 3px solid #4caf50;
+    padding: 15px;
+}
