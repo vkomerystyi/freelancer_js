@@ -52,3 +52,43 @@ body {
     letter-spacing: 1px;
     padding-bottom: 20px;
 }
+
+button {
+    background-color: #4caf50;
+    border: 1px solid green;
+    color: white;
+    padding: 10px 24px;
+    cursor: pointer;
+    display: block;
+    margin: 2px;
+}
+button:hover {
+    background-color: #3e8e41;
+}
+/* --------- */
+.main__ul {
+    padding-top: 20px;
+}
+ul li {
+    margin-bottom: 10px;
+}
+ul li::before {
+    content: "*";
+    color: #4caf50;
+    display: inline-block;
+    width: 1em;
+    margin-left: 1em;
+}
+ul li:last-child {
+    margin-bottom: 0;
+}
+/* --------- */
+.input-body {
+    margin-bottom: 5px;
+}
+input {
+    border: 1px solid #4caf50;
+}
+.input-body:last-child {
+    margin-bottom: 0px;
+}
