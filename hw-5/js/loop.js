@@ -86,7 +86,11 @@ tableDiv3.append(table3)
 
 const tableDiv5 = document.querySelector(".main__table5")
 const table5 = document.createElement("table")
+const table6 = document.createElement("table")
+const table7 = document.createElement("table")
 table5.className = "table-row"
+table6.className = "table-row"
+table7.className = "table-row"
 
 let countTd = 1
 
@@ -107,9 +111,9 @@ for (let i = 0; i < 3; i++) {
         td.innerText = `${countTd++}`
         tr.append(td)
     }
-    table5.append(tr)
+    table6.append(tr)
 }
-tableDiv5.append(table5)
+tableDiv5.append(table6)
 for (let i = 0; i < 3; i++) {
     const tr = document.createElement("tr")
     for (let j = 0; j < 3; j++) {
@@ -117,8 +121,14 @@ for (let i = 0; i < 3; i++) {
         td.innerText = `${countTd++}`
         tr.append(td)
     }
-    table5.append(tr)
+    table7.append(tr)
 }
-tableDiv5.append(table5)
+tableDiv5.append(table7)
 /* Задача 7. Вивести на екран N абзаців (N вводиться користувачем) за зразком:
  */
+const divSeven = document.querySelector(".main__seven")
+
+for (let i = 0; i < 4; i++) {
+    const h1 = document.createElement("h1")
+    h1.innerText = "заголовок 1"
+}

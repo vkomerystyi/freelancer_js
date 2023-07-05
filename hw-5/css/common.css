@@ -2,6 +2,9 @@
 body {
     font-family: "Roboto";
 }
+div {
+    padding: 5px;
+}
 .wrapper {
     min-height: 100%;
     position: relative;
@@ -96,9 +99,11 @@ input {
 .main__table {
     padding: 15px;
 }
+
 .table-row {
     border: 3px solid #4caf50;
     border-collapse: collapse;
+    margin-bottom: 5px;
 }
 .table-row td {
     background-color: green;
