@@ -66,3 +66,59 @@ for (let i = 0; i < 7; i++) {
 table.append(tr)
 tableDiv.append(table)
 /* Задача 4. Вивести таблицю з 3 рядків і 7 стовпців */
+const tableDiv3 = document.querySelector(".main__table3")
+const table3 = document.createElement("table")
+table3.className = "table-row"
+
+for (let i = 0; i < 3; i++) {
+    const tr = document.createElement("tr")
+    for (let j = 0; j < 7; j++) {
+        const td = document.createElement("td")
+        td.innerText = `${j + 1}`
+        tr.append(td)
+    }
+    table3.append(tr)
+}
+tableDiv3.append(table3)
+/* Задача 5. Вивести таблицю */
+/* Задача 6. Вивести 3 таблиці (по 3 рядки і 3 стовпці у кожній) за зразком
+ */
+
+const tableDiv5 = document.querySelector(".main__table5")
+const table5 = document.createElement("table")
+table5.className = "table-row"
+
+let countTd = 1
+
+for (let i = 0; i < 3; i++) {
+    const tr = document.createElement("tr")
+    for (let j = 0; j < 3; j++) {
+        const td = document.createElement("td")
+        td.innerText = `${countTd++}`
+        tr.append(td)
+    }
+    table5.append(tr)
+}
+tableDiv5.append(table5)
+for (let i = 0; i < 3; i++) {
+    const tr = document.createElement("tr")
+    for (let j = 0; j < 3; j++) {
+        const td = document.createElement("td")
+        td.innerText = `${countTd++}`
+        tr.append(td)
+    }
+    table5.append(tr)
+}
+tableDiv5.append(table5)
+for (let i = 0; i < 3; i++) {
+    const tr = document.createElement("tr")
+    for (let j = 0; j < 3; j++) {
+        const td = document.createElement("td")
+        td.innerText = `${countTd++}`
+        tr.append(td)
+    }
+    table5.append(tr)
+}
+tableDiv5.append(table5)
+/* Задача 7. Вивести на екран N абзаців (N вводиться користувачем) за зразком:
+ */
