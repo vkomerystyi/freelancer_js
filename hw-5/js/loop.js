@@ -130,5 +130,72 @@ const divSeven = document.querySelector(".main__seven")
 
 for (let i = 0; i < 4; i++) {
     const h1 = document.createElement("h1")
-    h1.innerText = "заголовок 1"
+    h1.innerText = `Заголовок ${i + 1}`
+    divSeven.append(h1)
+    for (let j = 0; j <= i; j++) {
+        const p = document.createElement("p")
+        const hr = document.createElement("hr")
+        p.innerText = `Розділ ${i + 1}. Параграф ${j + 1}`
+        divSeven.append(p)
+        divSeven.append(hr)
+    }
 }
+/* Задача 8. Користувач загадує число. За 3 спроби комп’ютер намагається вгадати число користувача (використати confirm). */
+/* const userNumber8 = 7
+
+let a = 3
+do {
+    const randomComp = Math.floor(Math.random() * 10) + 1
+    const ansComp = confirm(`Ваше число ${randomComp}`)
+    if (ansComp) {
+        break
+    }
+    a--
+} while (a > 0) */
+/* Задача 9. Користувач загадує число. Комп’ютер задає питання поки не вгадає число користувача (використати confirm).
+ */
+/* const userNumber9 = 7
+
+do {
+    const randomComp = Math.floor(Math.random() * 10) + 1
+    const ansComp = confirm(`Ваше число ${randomComp}`)
+    if (ansComp) {
+        break
+    }
+    a--
+} while (true) */
+/* Задача 10. Знайти суму всіх непарних чисел, що знаходяться між заданими користувачем числами.  */
+
+const minInt = 2
+const maxInt = 25
+let sumInt = 0
+for (let i = minInt; i < maxInt; i++) {
+    if (i % 2 !== 0) {
+        sumInt += i
+    }
+}
+const task10 = document.querySelector(".main__nine")
+const h3 = document.createElement("h3")
+h3.innerText = sumInt
+task10.append(h3)
+
+/* Задача 11. Знайти суму 5 непарних чисел, що знаходяться між заданими користувачем числами.
+ */
+const minInt11 = 2
+const maxInt11 = 250
+let sumInt11 = 0
+let iter = 0
+for (let i = minInt11; i < maxInt11; i++) {
+    if (i % 2 !== 0) {
+        sumInt11 += i
+        iter++
+        if (iter === 5) {
+            break
+        }
+    }
+}
+const task11 = document.querySelector(".main__eleven")
+const h11 = document.createElement("h3")
+h11.innerText = sumInt11
+task11.append(h11)
+/* Задача 12. Ігровий автомат. Випадково вибираємо зображення у 3 позиціях. Вибір у кожній позиції вибирається як одне з чотирьох зображень. Вивести ці зображення і повідомити виграш користувача (три перших зображення 100 грн, три других – 200, три третіх – 500, три четвертих зображення – 1000грн). Використати цикли і switch (для вибору зображення за номером). */
