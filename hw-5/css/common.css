@@ -118,3 +118,12 @@ hr {
     height: 2px;
     background-color: gray;
 }
+img {
+    width: 200px;
+}
+.divImg1,
+.divImg2,
+.divImg3,
+.divImg4 {
+    display: inline-block;
+}

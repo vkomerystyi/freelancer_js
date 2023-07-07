@@ -199,3 +199,57 @@ const h11 = document.createElement("h3")
 h11.innerText = sumInt11
 task11.append(h11)
 /* Задача 12. Ігровий автомат. Випадково вибираємо зображення у 3 позиціях. Вибір у кожній позиції вибирається як одне з чотирьох зображень. Вивести ці зображення і повідомити виграш користувача (три перших зображення 100 грн, три других – 200, три третіх – 500, три четвертих зображення – 1000грн). Використати цикли і switch (для вибору зображення за номером). */
+console.log("--------------")
+const task12 = document.querySelector(".main__twelve")
+let countImg1 = 0
+let countImg2 = 0
+let countImg3 = 0
+let countImg4 = 0
+for (let i = 0; i < 3; i++) {
+    const divImg1 = document.createElement("div")
+    divImg1.className = "divImg1"
+    const divImg2 = document.createElement("div")
+    divImg2.className = "divImg2"
+    const divImg3 = document.createElement("div")
+    divImg3.className = "divImg3"
+    const divImg4 = document.createElement("div")
+    divImg4.className = "divImg4"
+    let randomImg = Math.floor(Math.random() * 4) + 1
+    switch (randomImg) {
+        case 1:
+            divImg1.innerHTML = `<img src="img/${randomImg}.jpg" alt="">`
+            task12.append(divImg1)
+            countImg1++
+            break
+        case 2:
+            divImg2.innerHTML = `<img src="img/${randomImg}.jpg" alt="">`
+            task12.append(divImg2)
+            countImg2++
+            break
+        case 3:
+            divImg3.innerHTML = `<img src="img/${randomImg}.jpg" alt="">`
+            task12.append(divImg3)
+            countImg3++
+            break
+        case 4:
+            divImg4.innerHTML = `<img src="img/${randomImg}.jpg" alt="">`
+            task12.append(divImg4)
+            countImg4++
+            break
+    }
+}
+/* 13. Морський бій. Комп’ютер випадково розташовує одиночний корабель на полі розміром N*M. Маючи К снарядів користувач намагається потопити корабель. */
+const task13 = document.querySelector(".main__thirteen")
+const numN = 1
+const numM = 10
+let numK = 3
+
+const ship = 1 + Math.floor(Math.random() * (numM - numN + 1))
+do {
+    const shot = parseInt(prompt(`Постріл в заданий інтервал від ${numN} до ${numM} `))
+    if (ship === shot) alert(`Потопив ${ship}`)
+    numK--
+} while (numK > 0)
+task13.append(ship)
+/* 14. Каса. Користувачу повідомляють суму, яку йому треба сплатити. Користувач поступово вводить суму грошей до тих пір, поки суми не буде достатньо для оплати товарів (кожного разу користувачу повідомляють, яку ще суму потрібно ввести).
+ */
