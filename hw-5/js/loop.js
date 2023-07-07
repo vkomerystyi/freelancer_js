@@ -247,7 +247,10 @@ let numK = 3
 const ship = 1 + Math.floor(Math.random() * (numM - numN + 1))
 do {
     const shot = parseInt(prompt(`Постріл в заданий інтервал від ${numN} до ${numM} `))
-    if (ship === shot) alert(`Потопив ${ship}`)
+    if (ship === shot) {
+        alert(`Потопив ${ship}`)
+        break
+    }
     numK--
 } while (numK > 0)
 task13.append(ship)
