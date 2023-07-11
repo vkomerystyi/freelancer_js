@@ -1,8 +1,4 @@
 /* 
-
-Задача 6. Створити функцію, яка створює таблицю з вказаною кількістю рядків і стовпців (таблиця заповнюється заданим фіксованим повідомленням).
-Задача 7. Створити функцію, яка випадковим чином виводить на екран одне із 4 зображень (шляхи до зображень передаються у функцію)
-Задача 8. Створити функцію, яка виводить банер (у функцію передаються: зображення, заголовок та посилання, куди переходимо при кліку на зображення (тег img повине знаходитись у середині тега a: <a> <img src=”шлях”> </a>
 Задача 9. Дано покази температур (довільна кількість). Розробити функцію, яка дозволить підрахувати кількість від’ємних показів температури.
 Задача 10. Дано покази температур (довільна кількість). Розробити функцію, яка дозволить знайти середнє значення для додатних показів температури.
  */
@@ -176,6 +172,54 @@ function threeResult(...arg) {
 const result3 = threeResult(12, 15, 101, 150, -14)
 console.log(result3)
 //Задача 5. Створити окремі функції, які переводять:
-/*Сантиметри у дюйми;
-Кілограми у фунти;
-Кілометри у милі. */
+//Сантиметри у дюйми
+function centimetersToInches(centimeter) {
+    return centimeter / 2.54
+}
+const inches = centimetersToInches(10)
+console.log(inches)
+//Кілограми у фунти
+function kilogramsToPounds(kilogram) {
+    return kilogram * 2.2
+}
+const pound = kilogramsToPounds(1)
+console.log(pound)
+//Кілометри у милі
+function kilometersToMiles(kilometer) {
+    return kilometer * 0.62
+}
+const mile = kilometersToMiles(1)
+console.log(mile)
+//Задача 6. Створити функцію, яка створює таблицю з вказаною кількістю рядків і стовпців (таблиця заповнюється заданим фіксованим повідомленням).
+const task6 = document.querySelector(".main__task6")
+function createTable(row, col) {
+    const tb = document.createElement("table")
+    for (let i = 0; i < row; i++) {
+        const tr = document.createElement("tr")
+        for (let j = 0; j < col; j++) {
+            const td = document.createElement("td")
+            td.innerHTML = `ряд ${i + 1} </br> стовпець ${j + 1} `
+            tr.append(td)
+        }
+        tb.append(tr)
+    }
+    return tb
+}
+const tbUser = createTable(5, 5)
+task6.append(tbUser)
+//Задача 7. Створити функцію, яка випадковим чином виводить на екран одне із 4 зображень (шляхи до зображень передаються у функцію)
+const task7 = document.querySelector(".main__task7")
+const img = document.createElement("img")
+task7.append(img)
+const path1 = "img/1.jpg"
+const path2 = "img/2.jpg"
+const path3 = "img/3.jpg"
+const path4 = "img/4.jpg"
+
+function imgRandom(...arg) {
+    const randomNum = Math.floor(Math.random() * arg.length)
+    return arg[randomNum]
+}
+const imgR = imgRandom(path1, path2, path3, path4)
+img.src = imgR
+//Задача 8. Створити функцію, яка виводить банер (у функцію передаються: зображення, заголовок та посилання, куди переходимо при кліку на зображення (тег img повине знаходитись у середині тега a: <a> <img src=”шлях”> </a>
