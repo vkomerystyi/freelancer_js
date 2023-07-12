@@ -1,8 +1,3 @@
-/* 
-Задача 9. Дано покази температур (довільна кількість). Розробити функцію, яка дозволить підрахувати кількість від’ємних показів температури.
-Задача 10. Дано покази температур (довільна кількість). Розробити функцію, яка дозволить знайти середнє значення для додатних показів температури.
- */
-
 //Задача 0. Створити функцію, яка за номером місяця повертає пору року, до якої відноситься цей місяць.
 const task0 = document.querySelector(".main__task0")
 const div0 = document.createElement("div")
@@ -223,3 +218,47 @@ function imgRandom(...arg) {
 const imgR = imgRandom(path1, path2, path3, path4)
 img.src = imgR
 //Задача 8. Створити функцію, яка виводить банер (у функцію передаються: зображення, заголовок та посилання, куди переходимо при кліку на зображення (тег img повине знаходитись у середині тега a: <a> <img src=”шлях”> </a>
+const banner = document.querySelector(".main__task8")
+const pathBanner = "img/1.jpg"
+const titleText = "банер"
+const link = "https://www.google.com/"
+
+function showBanner(img, title, link) {
+    let banner = document.createElement("div")
+    banner.innerHTML = `<h3>${title}</h3>
+                        <a href="${link}"> 
+                            <img src="${img}" alt="банер">
+                        </a>
+                    `
+    return banner
+}
+const bannerShow = showBanner(pathBanner, titleText, link)
+banner.append(bannerShow)
+//Задача 9. Дано покази температур (довільна кількість). Розробити функцію, яка дозволить підрахувати кількість від’ємних показів температури.
+const task9 = document.querySelector(".main__task9")
+function numberOfNegativeTemperature(...arg) {
+    let count = 0
+    for (let i = 0; i < arg.length; i++) {
+        if (arg[i] < 0) {
+            count++
+        }
+    }
+    return count
+}
+const negativeTemperature = numberOfNegativeTemperature(15, 12, 8, 3, 0, -5, -7, -4)
+task9.append(negativeTemperature)
+//Задача 10. Дано покази температур (довільна кількість). Розробити функцію, яка дозволить знайти середнє значення для додатних показів температури.
+const task10 = document.querySelector(".main__task10")
+function averageValuePositive(...arg) {
+    let average = 0
+    let count = 0
+    for (let i = 0; i < arg.length; i++) {
+        if (arg[i] > 0) {
+            count++
+            average += arg[i]
+        }
+    }
+    return average / count
+}
+const average = averageValuePositive(15, 12, 8, 3, 0, -5, -7, -4)
+task10.append(average)
