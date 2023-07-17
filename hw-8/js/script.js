@@ -1,5 +1,4 @@
 /*
-Задача 8. Дано одновимірний масив, у якому зберігається певна виграшна сума (елементи заповнюються випадковим чином значеннями від -500 до 500). Надаючи користувачу можливість вибирати номери елементів  (поки він не відмовиться). Знаходити сумарний виграш.
 Задача 9. Морський бій. Користувач вводить кількість клітинок одновимірного масиву та кількість одиночних кораблів. Комп’ютер довільно розміщує ці одиночні кораблі у масиві по один у клітинці (якщо у клітинці 0, то клітинка пуста, якщо 1 – то це означає, що там є корабель. Користувач вводить номер клітинки, куди стріляє. Гра продовжується до тих пір, поки не будуть потоплені усі кораблі.
  */
 // Задача 1. Дано масив, який містить оцінки з К предметів. Знайти середній бал і з’ясувати до якої категорії він відноситься (відмінник, двійочник (має хоча би одну двійку), хорошист (оцінки добре і відмінно), трійочник(є хоча би одна трійка)).
@@ -247,10 +246,76 @@ let productsTitles = namesPrices(prices, names, countMoney)
 console.log(productsTitles)
 // Задача 7. Дано послідовність платіжок протягом року. Знайти сумарну кількість грошей за:
 console.log("Задача 7")
+const paymentsYear = [10.99, 5.99, 15.49, 8.75, 12.25, 9.99, 7.49, 6.99, 14.99, 11.25, 8.99, 12.75]
 // за весь рік;
+function totalAmountMoneyAllYear(arr, startMonth, endMonth) {
+    let sumYear = 0
+    for (let i = startMonth - 1; i < endMonth; i++) {
+        sumYear += arr[i]
+    }
+    return sumYear
+}
+// за весь рік;
+console.log("за весь рік")
+const totalYear = totalAmountMoneyAllYear(paymentsYear, 1, 12)
+console.log(totalYear)
 // у першій половині року;
+console.log("першій половині року")
+const firstHalfYear = totalAmountMoneyAllYear(paymentsYear, 1, 6)
+console.log(firstHalfYear)
 // у другій половині року;
+console.log("другій половині року")
+const secondHalfYear = totalAmountMoneyAllYear(paymentsYear, 6, 12)
+console.log(secondHalfYear)
 // за літо;
+console.log("за літо")
+const summerYear = totalAmountMoneyAllYear(paymentsYear, 6, 8)
+console.log(summerYear)
 // за ІІ квартал;
+console.log("за ІІ квартал")
+const secondQuarter = totalAmountMoneyAllYear(paymentsYear, 4, 6)
+console.log(secondQuarter)
 // за парні місяці (з парними номерами);
+console.log("за парні місяці (з парними номерами)")
+function totalEvenMonth(arr) {
+    let sumMoneyEven = 0
+    for (let i = 0; i < arr.length; i++) {
+        if ((i + 1) % 2 === 0) {
+            sumMoneyEven += arr[i]
+        }
+    }
+    return sumMoneyEven
+}
+const evenMonth = totalEvenMonth(paymentsYear)
+console.log(evenMonth)
 // за місяці, які є початковими у сезоні (весна, літо, осінь, зима).
+console.log("за місяці, які є початковими у сезоні (весна, літо, осінь, зима)")
+function initialSeason(arr) {
+    let sumInitialSeason = 0
+    for (let i = 0; i < arr.length; i++) {
+        if ((i + 1) % 3 === 0) {
+            sumInitialSeason += arr[i]
+        }
+    }
+    return sumInitialSeason
+}
+const startSeason = initialSeason(paymentsYear)
+console.log(startSeason)
+// Задача 8. Дано одновимірний масив, у якому зберігається певна виграшна сума (елементи заповнюються випадковим чином значеннями від -500 до 500). Надаючи користувачу можливість вибирати номери елементів  (поки він не відмовиться). Знаходити сумарний виграш.
+// випадкові значення від -500 до 500
+const minV = -500
+const maxV = 500
+function randomNum(minV, maxV) {
+    return Math.floor(Math.random() * (maxV - minV + 1)) + minV
+}
+// дано одновимірний масив значень
+const lengthArr = 10
+function giveArray(count) {
+    const arr = []
+    for (let i = 0; i < count; i++) {
+        arr.push(randomNum(minV, maxV))
+    }
+    return arr
+}
+//Надаючи користувачу можливість вибирати номери елементів
+//Знаходити сумарний виграш
