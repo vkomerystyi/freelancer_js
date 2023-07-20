@@ -76,7 +76,10 @@ console.log(startNumberA)
 // 9. Дано масив імен. Сформувати масив з перших літер цих імен.
 console.log("задача 9")
 const arrName = ["ABBA", "CDD", "EFFE", "GHGY", "ABAS", "KLKL", "MNM", "OPPO", "QRR", "STAT"]
-
+const newArrName = arrName.map((elem) => elem[0])
+console.log(newArrName)
 // 10. Дано масив цін у грн. Податок складає 20%. Сформувати масив, який буде містити величину сплаченого податку у грн.
 console.log("задача 10")
 const arrUser10 = [120, 130, 250, 12, 350, 55, 70, 65, 80, 10, 100]
+const newArrUser10 = arrUser10.map((elem) => elem * 0.2)
+console.log(newArrUser10)
