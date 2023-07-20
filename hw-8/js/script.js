@@ -300,7 +300,7 @@ const startSeason = initialSeason(paymentsYear)
 console.log(startSeason)
 // Задача 8. Дано одновимірний масив, у якому зберігається певна виграшна сума (елементи заповнюються випадковим чином значеннями від -500 до 500). Надаючи користувачу можливість вибирати номери елементів  (поки він не відмовиться). Знаходити сумарний виграш.
 // випадкові значення від -500 до 500
-console.log("Задача 8")
+/* console.log("Задача 8")
 const minV = -500
 const maxV = 500
 function randomNum(minV, maxV) {
@@ -334,5 +334,48 @@ function gameRandomNum(arr) {
 //Знаходити сумарний виграш
 const userNum = gameRandomNum(userArray)
 console.log(userNum)
-
+ */
 // Задача 9. Морський бій. Користувач вводить кількість клітинок одновимірного масиву та кількість одиночних кораблів. Комп’ютер довільно розміщує ці одиночні кораблі у масиві по один у клітинці (якщо у клітинці 0, то клітинка пуста, якщо 1 – то це означає, що там є корабель. Користувач вводить номер клітинки, куди стріляє. Гра продовжується до тих пір, поки не будуть потоплені усі кораблі.
+console.log("Задача 9")
+// кількість одиночних кораблів
+const countShip = 3
+// довжина поля гри
+const numberCells = 6
+// довільний номер клітинки поля гри
+function randNumCell(numCell) {
+    return Math.floor(Math.random() * numCell)
+}
+// поле гри заповнене 0
+function playField(numCell) {
+    const arr = []
+    for (let i = 0; i < numCell; i++) {
+        arr.push(0)
+    }
+    return arr
+}
+const cell = playField(numberCells)
+// поле гри заповнене кораблями довільним чином
+function ship(arrC, ship, count) {
+    const newA = arrC
+    for (let i = 0; i < ship; i++) {
+        const randNum = randNumCell(count)
+        if (newA[randNum] === 1) {
+            i--
+            continue
+        }
+        newA[randNum] = 1
+    }
+    return newA
+}
+const shipArr = ship(cell, countShip, numberCells)
+console.log(shipArr)
+// гра
+function game(arr, shot) {
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[shot] === 1) {
+            arr[shot] = 0
+        }
+    }
+    return arr
+}
+console.log(game(shipArr, 5))
