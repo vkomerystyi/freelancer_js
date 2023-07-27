@@ -1,6 +1,5 @@
-/* Задача 1. Знайти суми елементів у вказаній області
-1) перша четверть: 1/4
-2) друга четверть: 2/4
+/* 
+
 3) третя чверть: 3/4
 4) четверта четверть: 4/4
 5) Суму парних рядків
@@ -20,3 +19,54 @@
 
 Задача 3. Морський бій. Випадковим чином на двовимірному полі розміром 6*6 розташовується 5 кораблів. Користувач стріляє вказуючи координати. Гра продовжується поки не потоплено усі кораблі або у користувача не закінчаться снаряди.
  */
+const min = 1
+const max = 100
+function randomNum(minV, maxV) {
+    return Math.floor(Math.random() * (maxV - minV + 1)) + minV
+}
+
+function multiArray(rows, columns, minV, maxV) {
+    const arr = []
+    for (let i = 0; i < rows; i++) {
+        const row = []
+        for (let j = 0; j < columns; j++) {
+            const numRand = randomNum(minV, maxV)
+            row.push(numRand)
+        }
+        arr.push(row)
+    }
+    return arr
+}
+const startArray = multiArray(4, 4, min, max)
+console.log(startArray)
+console.log("-------")
+const arrTask1 = JSON.parse(JSON.stringify(startArray))
+console.log(arrTask1)
+// Задача 1. Знайти суми елементів у вказаній області
+// 1) перша четверть: 1/4
+console.log("перша четверть: 1/4")
+let sum1 = 0
+for (let i = 0; i < arrTask1.length / 2; i++) {
+    for (let j = 0; j < arrTask1[i].length / 2; j++) {
+        console.log(arrTask1[i][j])
+        sum1 += arrTask1[i][j]
+    }
+}
+console.log("Сума")
+console.log(sum1)
+
+// 2) друга четверть: 2/4
+console.log("2) друга четверть: 2/4")
+let sum2 = 0
+for (let i = 0; i < arrTask1.length / 2; i++) {
+    for (let j = arrTask1[i].length / 2; j < arrTask1[i].length; j++) {
+        console.log(arrTask1[i][j])
+        sum2 += arrTask1[i][j]
+    }
+}
+console.log("Сума")
+console.log(sum2)
+// 3) третя чверть: 3/4
+console.log("3) третя чверть: 3/4")
+let sum3 = 0
+for (let i = arrTask1.length / 2; i < arrTask1.length; i++) {}
