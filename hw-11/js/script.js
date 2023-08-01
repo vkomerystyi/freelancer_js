@@ -189,7 +189,32 @@ console.log("6) сформувати загальний список (однов
 const task2_6 = allListFilter(shopK, 80)
 console.log(task2_6)
 // 7) відсортувати кожен тиждень за зростанням
-// const arrTask1 = JSON.parse(JSON.stringify(startArray))
+console.log("7) відсортувати кожен тиждень за зростанням")
 const arrTask2_7 = JSON.parse(JSON.stringify(shopK))
+function sortArr(arr) {
+    for (let i = 0; i < arr.length; i++) {
+        arr[i].sort((el1, el2) => el1 - el2)
+    }
+    return arr
+}
+const task2_7 = sortArr(arrTask2_7)
+console.log(task2_7)
 // 8) відсортувати тижні (рядки) за спаданням максимального елементи у цьому тижні (рядку), тобто при порівнянні рядків потрібно порівнювати максимальні елементи у кожному з цих рядків
+const arrTask2_8 = JSON.parse(JSON.stringify(shopK))
+console.log(" 8) відсортувати тижні (рядки) за спаданням максимального елементи у цьому тижні")
+function sortArrTask2_8(arr) {
+    return arr.sort((el1, el2) => Math.max(...el1) - Math.max(...el2))
+}
+// const task2_8 = sortArrTask2_8(arrTask2_8)
+// console.log(task2_8)
 // 9) упорядкувати тижні (рядки) за спаданням суми елементів у рядку (тобто при порівнянні двох рядків треба знайти суму кожного з рядків і порівнювати ці суми, на основі цих сум буде зрозуміло, який з елементів повинен іти раніше).
+const arrTask2_9 = JSON.parse(JSON.stringify(shopK))
+console.log("9) упорядкувати тижні (рядки) за спаданням суми елементів у рядку ")
+
+// Функція для обчислення суми елементів у рядку
+const calculateSum = (row) => row.reduce((acc, val) => acc + val, 0)
+
+// Використовуємо метод sort() з власною функцією порівняння за сумою рядка
+arrTask2_9.sort((rowA, rowB) => calculateSum(rowB) - calculateSum(rowA))
+
+console.log(arrTask2_9)
