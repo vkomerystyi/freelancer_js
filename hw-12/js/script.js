@@ -22,6 +22,7 @@ function randomArray(countNun, min, max) {
 const randomArrNumber = randomArray(30, minValue, maxValue)
 console.log(randomArrNumber)
 const arrTask1 = [...randomArrNumber]
+const arrTask2 = [...randomArrNumber]
 // Задача 1. Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів під час сортування бульбашкою
 function sortBubble(arr) {
     let isNum
@@ -44,3 +45,32 @@ console.log("Підрахувати скільки було обмінів пі�
 console.log(sortBubble(arrTask1))
 
 // Задача 2. Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів під час сортування змішуванням.
+
+function sortCocktail(arr) {
+    let leftIndex = 0
+    let rightIndex = arr.length - 1
+    let count = 0
+    while (leftIndex < rightIndex) {
+        for (let i = leftIndex; i < rightIndex; i++) {
+            if (arr[i] > arr[i + 1]) {
+                const temp = arr[i]
+                arr[i] = arr[i + 1]
+                arr[i + 1] = temp
+                count++
+            }
+        }
+        rightIndex--
+        for (let i = rightIndex; i > leftIndex; i--) {
+            if (arr[i] < arr[i - 1]) {
+                const temp = arr[i]
+                arr[i] = arr[i - 1]
+                arr[i - 1] = temp
+                count++
+            }
+        }
+        leftIndex++
+    }
+    return count
+}
+console.log("Підрахувати скільки було обмінів під час сортування змішуванням")
+console.log(sortCocktail(arrTask2))
