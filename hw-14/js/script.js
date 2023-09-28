@@ -3,9 +3,9 @@
 назва компанії на час розробки (назву періодично змінюють)
 власник компанії
 споснсори (масив спонсорів)
-             * прізвище спонсора
-      * ім’я  спонсора
-      * сума вкладень спонсора
+            * прізвище спонсора
+            * ім’я  спонсора
+            * сума вкладень спонсора
 рік випуску
 вартість сайту
 Знайти:
@@ -91,3 +91,34 @@ console.log(firstBook3000)
 // знайти номер першої книги, вартість якої більше за 3000грн
 const firstNumBook3000 = booksList.findIndex((book) => book.price > 3000)
 console.log(firstNumBook3000)
+
+// Задача. Дано масив імен. Підхраувати кількість входжень кожного імені за зразком
+const usersNames = ["Ivan", "Petro", "Olga", "Ivan", "Olga", "Petro", "Olga", "Olga", "Ivan", "Ivan", "Petro", "Ivan"]
+
+const usersNamesObj = {}
+for (const userName of usersNames) {
+    if (userName in usersNamesObj) {
+        usersNamesObj[userName]++
+    } else {
+        usersNamesObj[userName] = 1
+    }
+}
+for (const key in usersNamesObj) {
+    console.log(`${key} : ${usersNamesObj[key]}`)
+}
+// Задача. Розробити функцію, у яку передають об’єкт (день, місяць, рік). Визначити, який буде місяць через N місяців.
+let userDate = {
+    day: 23,
+    month: 9,
+    year: 2023,
+}
+
+// function getObjMonth(date, N) {
+//     return ((date.month - 1 + N) % 12) + 1
+// }
+
+function getObjMonth({ month }, N) {
+    return ((month - 1 + N) % 12) + 1
+}
+const currDate = getObjMonth(userDate, 3)
+console.log(currDate)
