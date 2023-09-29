@@ -1,21 +1,5 @@
-/* Задача 1. Описати масив об’єктів – сайтів розроблених компанією з такими властивостями
------ Властивості ------
-назва компанії на час розробки (назву періодично змінюють)
-власник компанії
-споснсори (масив спонсорів)
-            * прізвище спонсора
-            * ім’я  спонсора
-            * сума вкладень спонсора
-рік випуску
-вартість сайту
-Знайти:
-1) загальну вартість усіх сайтів
-2) кількість сайтів, що було зроблено між 2000 та 2009 рр.
-3) кількість сайтів, де сума спонсорських вкладень була більшою за 100000
-4) створити загальний список усіх спонсорів (поки можуть повторюватись, просто зібрати усі у масив)
-5) знайти рік, коли прибуток був найбільшим
-6) упорядкувати список за спаданням прибутку
-7) Створити 2 окремих списки з копіями об’єктів, що містять сайти з вартість до 10000 і більше 10000
+/* 
+
 //====================================================
 Задача 2. Розробити функцію, у яку передають об’єкт (день, місяць, рік). Визначити, який буде рік через N місяців.
 //=================================
@@ -122,3 +106,102 @@ function getObjMonth({ month }, N) {
 }
 const currDate = getObjMonth(userDate, 3)
 console.log(currDate)
+
+/* ================================ */
+// Задача 1. Описати масив об’єктів – сайтів розроблених компанією з такими властивостями
+console.log("Задача 1. Описати масив об’єктів – сайтів розроблених компанією з такими властивостями")
+const siteDevCompany = [
+    {
+        // ----- Властивості ------
+        name: "dev 1", // назва компанії на час розробки (назву періодично змінюють)
+        owner: "Jon A", // власник компанії
+        sponsors: [
+            // споснсори (масив спонсорів) * прізвище спонсора * ім’я  спонсора * сума вкладень спонсора
+            { surname: "Rich A", name: "Lucky A", price: 22000 },
+            { surname: "Rich B", name: "Lucky B", price: 42000 },
+            { surname: "Rich C", name: "Lucky C", price: 62000 },
+        ],
+        year: 2008, // рік випуску
+        price: 100000, // вартість сайту
+    },
+    {
+        name: "dev 2",
+        owner: "Jon B",
+        sponsors: [
+            { surname: "Rich Aa", name: "Lucky Aa", price: 220000 },
+            { surname: "Rich Bb", name: "Lucky Bb", price: 420000 },
+            { surname: "Rich Cc", name: "Lucky Cc", price: 620000 },
+        ],
+        year: 2012,
+        price: 200000,
+    },
+    {
+        name: "dev 3",
+        owner: "Jon C",
+        sponsors: [
+            { surname: "Rich aAa", name: "Lucky aAa", price: 10000 },
+            { surname: "Rich bBb", name: "Lucky bBb", price: 32000 },
+            { surname: "Rich cCc", name: "Lucky cCc", price: 50000 },
+        ],
+        year: 2018,
+        price: 300000,
+    },
+    {
+        name: "dev 4",
+        owner: "Jon D",
+        sponsors: [
+            { surname: "Rich 1 aAa", name: "Lucky 1 aAa", price: 70000 },
+            { surname: "Rich 2 bBb", name: "Lucky 2 bBb", price: 92000 },
+            { surname: "Rich 3 cCc", name: "Lucky 3 cCc", price: 60000 },
+        ],
+        year: 2010,
+        price: 400000,
+    },
+    {
+        name: "dev 5",
+        owner: "Jon F",
+        sponsors: [
+            { surname: "Rich 4 aAa", name: "Lucky 4 aAa", price: 72000 },
+            { surname: "Rich 5 bBb", name: "Lucky 5 bBb", price: 75000 },
+            { surname: "Rich 6 cCc", name: "Lucky 6 cCc", price: 176000 },
+        ],
+        year: 2005,
+        price: 500000,
+    },
+]
+// Знайти:
+console.log("Знайти:")
+// 1) загальну вартість усіх сайтів
+const allPricesSites = siteDevCompany.reduce((sumSite, site) => (sumSite += site.price), 0)
+console.log("1) загальну вартість усіх сайтів")
+console.log(allPricesSites + "$")
+// 2) кількість сайтів, що було зроблено між 2000 та 2009 рр.
+console.log("2) кількість сайтів, що було зроблено між 2000 та 2009 рр.")
+const countSitePeriod = siteDevCompany.reduce(
+    (count, site) => (site.year >= 2000 && site.year <= 2009 ? count + 1 : count),
+    0
+)
+console.log(countSitePeriod)
+// 3) кількість сайтів, де сума спонсорських вкладень була більшою за 100000
+console.log("3) кількість сайтів, де сума спонсорських вкладень була більшою за 100000")
+console.log("--- 1")
+const countSponsorsPriceBig = siteDevCompany.reduce(
+    (count, site) =>
+        count +
+        site.sponsors.reduce((sponsorCount, elem) => (elem.price > 100000 ? sponsorCount + 1 : sponsorCount), 0),
+    0
+)
+console.log(countSponsorsPriceBig)
+console.log("--- 2")
+let count = 0
+for (const sites of siteDevCompany) {
+    for (const sponsors of sites.sponsors) {
+        if (sponsors.price > 100000) count++
+    }
+}
+console.log(count)
+// 4) створити загальний список усіх спонсорів (поки можуть повторюватись, просто зібрати усі у масив)
+
+// 5) знайти рік, коли прибуток був найбільшим
+// 6) упорядкувати список за спаданням прибутку
+// 7) Створити 2 окремих списки з копіями об’єктів, що містять сайти з вартість до 10000 і більше 10000
