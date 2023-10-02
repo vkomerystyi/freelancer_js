@@ -1,8 +1,4 @@
 /* 
-
-//====================================================
-Задача 2. Розробити функцію, у яку передають об’єкт (день, місяць, рік). Визначити, який буде рік через N місяців.
-//=================================
 Задача 3. Ось приклад відповіді з одного з сайтів (масив об’єктів з інформацією про товари) 
 
 (весь текст масиву, що в кінці документу скопіюєте в код). 
@@ -136,6 +132,17 @@ const siteDevCompany = [
         price: 200000,
     },
     {
+        name: "dev 5",
+        owner: "Jon F",
+        sponsors: [
+            { surname: "Rich 4 aAa", name: "Lucky 4 aAa", price: 72000 },
+            { surname: "Rich 5 bBb", name: "Lucky 5 bBb", price: 75000 },
+            { surname: "Rich 6 cCc", name: "Lucky 6 cCc", price: 1760000 },
+        ],
+        year: 2005,
+        price: 500000,
+    },
+    {
         name: "dev 3",
         owner: "Jon C",
         sponsors: [
@@ -156,17 +163,6 @@ const siteDevCompany = [
         ],
         year: 2010,
         price: 400000,
-    },
-    {
-        name: "dev 5",
-        owner: "Jon F",
-        sponsors: [
-            { surname: "Rich 4 aAa", name: "Lucky 4 aAa", price: 72000 },
-            { surname: "Rich 5 bBb", name: "Lucky 5 bBb", price: 75000 },
-            { surname: "Rich 6 cCc", name: "Lucky 6 cCc", price: 176000 },
-        ],
-        year: 2005,
-        price: 500000,
     },
 ]
 // Знайти:
@@ -201,7 +197,18 @@ for (const sites of siteDevCompany) {
 }
 console.log(count)
 // 4) створити загальний список усіх спонсорів (поки можуть повторюватись, просто зібрати усі у масив)
-
+console.log("4) створити загальний список усіх спонсорів")
+let sponsors = []
+for (const sites of siteDevCompany) {
+    for (const sponsor of sites.sponsors) {
+        sponsors.push(sponsor)
+    }
+}
+console.log(sponsors)
 // 5) знайти рік, коли прибуток був найбільшим
+console.log("5) знайти рік, коли прибуток був найбільшим")
+
 // 6) упорядкувати список за спаданням прибутку
 // 7) Створити 2 окремих списки з копіями об’єктів, що містять сайти з вартість до 10000 і більше 10000
+
+// Задача 2. Розробити функцію, у яку передають об’єкт (день, місяць, рік). Визначити, який буде рік через N місяців.
