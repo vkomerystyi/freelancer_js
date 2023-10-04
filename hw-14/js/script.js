@@ -132,17 +132,6 @@ const siteDevCompany = [
         price: 200000,
     },
     {
-        name: "dev 5",
-        owner: "Jon F",
-        sponsors: [
-            { surname: "Rich 4 aAa", name: "Lucky 4 aAa", price: 72000 },
-            { surname: "Rich 5 bBb", name: "Lucky 5 bBb", price: 75000 },
-            { surname: "Rich 6 cCc", name: "Lucky 6 cCc", price: 1760000 },
-        ],
-        year: 2005,
-        price: 500000,
-    },
-    {
         name: "dev 3",
         owner: "Jon C",
         sponsors: [
@@ -163,6 +152,17 @@ const siteDevCompany = [
         ],
         year: 2010,
         price: 400000,
+    },
+    {
+        name: "dev 5",
+        owner: "Jon F",
+        sponsors: [
+            { surname: "Rich 4 aAa", name: "Lucky 4 aAa", price: 72000 },
+            { surname: "Rich 5 bBb", name: "Lucky 5 bBb", price: 75000 },
+            { surname: "Rich 6 cCc", name: "Lucky 6 cCc", price: 1760 },
+        ],
+        year: 2005,
+        price: 500000,
     },
 ]
 // Знайти:
@@ -207,8 +207,26 @@ for (const sites of siteDevCompany) {
 console.log(sponsors)
 // 5) знайти рік, коли прибуток був найбільшим
 console.log("5) знайти рік, коли прибуток був найбільшим")
+let maxInvestment = 0
+let yearMax
 
+for (const site of siteDevCompany) {
+    const sum = site.sponsors.reduce((total, sponsor) => total + sponsor.price, 0)
+    if (sum > maxInvestment) {
+        maxInvestment = sum
+        yearMax = site.year
+    }
+}
+console.log(yearMax)
 // 6) упорядкувати список за спаданням прибутку
+console.log("6) упорядкувати список за спаданням прибутку")
+const newSiteDevCompany = JSON.parse(JSON.stringify(siteDevCompany))
+newSiteDevCompany.sort((a, b) => b.price - a.price)
+console.log(newSiteDevCompany)
 // 7) Створити 2 окремих списки з копіями об’єктів, що містять сайти з вартість до 10000 і більше 10000
-
+console.log(" 7) Створити 2 окремих списки з копіями об’єктів, що містять сайти")
+const bigPriceSite = siteDevCompany.filter((site) => site.price > 300000)
+console.log(bigPriceSite)
+const lessPriceSite = siteDevCompany.filter((site) => site.price < 300000)
+console.log(lessPriceSite)
 // Задача 2. Розробити функцію, у яку передають об’єкт (день, місяць, рік). Визначити, який буде рік через N місяців.
