@@ -230,3 +230,17 @@ console.log(bigPriceSite)
 const lessPriceSite = siteDevCompany.filter((site) => site.price < 300000)
 console.log(lessPriceSite)
 // Задача 2. Розробити функцію, у яку передають об’єкт (день, місяць, рік). Визначити, який буде рік через N місяців.
+const objYear = {
+    day: 4,
+    month: 10,
+    year: 2023,
+}
+
+const monthNext = ({ month, year }, N) => {
+    let years = Math.floor((month + N) / 12)
+    return year + years
+}
+console.log(
+    "Задача 2. Розробити функцію, у яку передають об’єкт (день, місяць, рік). Визначити, який буде рік через N місяців."
+)
+console.log(monthNext(objYear, 60))
