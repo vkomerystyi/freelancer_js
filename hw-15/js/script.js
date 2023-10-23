@@ -65,7 +65,7 @@ render - виведення інформації про тестування н�
  */
 /*  Задача 0. Дано два об’єкта. Обидва містять масив цілих чисел. При цьому у одному з них є функція знаходження суми, а у іншому – функція для знаходження добутку тих, які знаходяться між заданими мінімальним і максимальних значенням.
 Використати обидва методи стосовно обидвох об’єктів (використати call, apply) */
-const obj1 = {
+/* const obj1 = {
   arr1: [1, 23, 24, 98],
   sumNumber: function () {
     return this.arr1.reduce((acc, el) => acc + el, 0)
@@ -80,4 +80,38 @@ const obj2 = {
 const sum = obj1.sumNumber()
 console.log(sum)
 const prod = obj2.prodNum()
-console.log(prod)
+console.log(prod) */
+
+/* ============= */
+let product = {
+  title: 'table',
+  price: 100,
+  count: 34,
+  paymentDay: 25,
+  delivery: {
+    auto: 'audi',
+    kilom: 100,
+  },
+  getDelivery: function (kilomCount) {
+    return this.delivery.kilom * kilomCount
+  },
+  // metods
+  getTotalPrice: function () {
+    return this.price * this.count
+  },
+  getDayPrice: function (dayCount) {
+    return dayCount * this.paymentDay
+  },
+  reducePrice: function (value) {
+    this.price = this.price - (this.price * value) / 100
+  },
+  incremPrice: function (value) {
+    this.price = this.price + (this.price * value) / 100
+  },
+  toString: function () {
+    return `${this.title} - ${this.price}`
+  },
+}
+console.log(product)
+console.log(product.toString())
+console.log('hello ' + product)
