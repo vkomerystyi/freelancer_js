@@ -115,3 +115,97 @@ let product = {
 console.log(product)
 console.log(product.toString())
 console.log('hello ' + product)
+// Приклад. Описати об’єкт «Інвойс»
+// ----- Властивості-характеристики (дані) ----
+// номер інвойса
+// перелік виконаних робіт
+// сума грошей
+// ----- Методи --------------------
+// перетворення у рядок (вивести номер інвойса, кількість виконаних робіт, сума грошей
+// перетворення у число (повертається сума грошей)
+
+// Використовуючи такий опис створити масив інвойсів. Вивести інформацію про інвойси у формі нумерованого списку
+//  та знайти загальну вартість використовуючи метод перетворення об’єкта у число
+
+let invoices = [
+  {
+    invNumber: 232,
+    complTask: ['Created task', 'updated form', 'add button'],
+    money: 2000,
+    toString: function () {
+      return `${this.invNumber} - ${this.complTask.length} - ${this.money}`
+    },
+    valueOf: function () {
+      return this.money
+    },
+  },
+  {
+    invNumber: 232,
+    complTask: ['Created task', 'updated form', 'add button'],
+    money: 3000,
+    toString: function () {
+      return `${this.invNumber} - ${this.complTask.length} - ${this.money}`
+    },
+    valueOf: function () {
+      return this.money
+    },
+  },
+  {
+    invNumber: 232,
+    complTask: ['Created task', 'updated form', 'add button'],
+    money: 4000,
+    toString: function () {
+      return `${this.invNumber} - ${this.complTask.length} - ${this.money}`
+    },
+    valueOf: function () {
+      return this.money
+    },
+  },
+  {
+    invNumber: 232,
+    complTask: ['Created task', 'updated form', 'add button'],
+    money: 5000,
+    toString: function () {
+      return `${this.invNumber} - ${this.complTask.length} - ${this.money}`
+    },
+    valueOf: function () {
+      return this.money
+    },
+  },
+  {
+    invNumber: 232,
+    complTask: ['Created task', 'updated form', 'add button'],
+    money: 2000,
+    toString: function () {
+      return `${this.invNumber} - ${this.complTask.length} - ${this.money}`
+    },
+    valueOf: function () {
+      return this.money
+    },
+  },
+]
+
+const div = document.querySelector('.main__task1')
+const ol = document.createElement('ol')
+for (const invoice of invoices) {
+  const li = document.createElement('li')
+  li.textContent = invoice
+  ol.appendChild(li)
+}
+div.appendChild(ol)
+const divSum = document.createElement('div')
+//  та знайти загальну вартість використовуючи метод перетворення об’єкта у число
+
+let sum = invoices.reduce((prevSum, invoice) => prevSum + invoice, 0)
+
+divSum.textContent = `Общая самма ${sum}`
+div.appendChild(divSum)
+
+const objF = {
+  a: 11,
+  b: 22,
+  c: [2, 3, 5, 7],
+}
+/* Object.freeze(objF) */
+objF.a = 100
+console.log(objF)
