@@ -1,45 +1,10 @@
 /*
-Задача 2. Створити об’єкт «Авто». 
-Авто	
-
-
-Поля(властивості)
-Марка
-Розмір бака
-Кількість наявних літрів
-Кількість місць
-Кількість пасажирів
-Методи (дії)
-Заправка на вказану кількість літрів
-Виведення кількості пасажирів
-Додавання пасажирів
-Висадка пасажирів
-
-
-Задача 3. Розробити клас MultChecker для перевірки таблиці множення
-Поля
-Число, яке перевіряємо (наприклад, перевірка частини таблиці множення на 7)
-Кількість правильних відповідей
-Кількість неправильних відповідей
-Методи
-Генерування прикладу (метод випадковим чином визначає друге число, перше число фіксоване)
-Перевірка правильності вказаної відповіді
-render - виведення інформації про тестування на екран
-
-
-
-
 Задача 4. Розробити клас Baner
 Поля
 Масив об’єктів ( графічних зображень та посилань на сайти)
-
-
 методи
 Метод випадкового вибору об’єкта (графічного зображення та посилання)
 Метод виведення випадкового банера
-
-
-
 
 Задача 5. Розробити клас «Керівник танців»
 Поля
@@ -100,3 +65,97 @@ console.log(prodApply)
 Поля(властивості) - Масив, у якому зберігається поле з зайцями
 Методи (дії) - Метод пострілу (задається позиція пострілу)
 Виведення ігрового поля */
+
+const shootingGallery = {
+  gallery: [0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0],
+  shot: function (x) {
+    if (this.gallery[x] === 1) {
+      console.log('Ви попали')
+      this.gallery[x] = 0
+    } else {
+      console.log('Не попали')
+    }
+  },
+  printField: function () {
+    console.log('Игровое поле')
+    console.log(this.gallery.join(' '))
+  },
+}
+
+shootingGallery.printField()
+shootingGallery.shot(3)
+shootingGallery.printField()
+shootingGallery.shot(2)
+shootingGallery.printField()
+/* Задача 2. 
+Створити об’єкт «Авто». 
+Авто	
+Поля(властивості) - Марка
+                    Розмір бака
+                    Кількість наявних літрів
+                    Кількість місць
+                    Кількість пасажирів
+Методи (дії) -  Заправка на вказану кількість літрів
+                Виведення кількості пасажирів
+                Додавання пасажирів
+                Висадка пасажирів */
+
+class Auto {
+  // Поля(властивості)
+  constructor(brand, tankSize, numberOfLitresAvailable, numberOfSeats, numberOfPassengers) {
+    this.brand = brand
+    this.tankSize = tankSize
+    this.numberOfLitresAvailable = numberOfLitresAvailable
+    this.numberOfSeats = numberOfSeats
+    this.numberOfPassengers = numberOfPassengers
+  }
+  // Методи (дії)
+  // Заправка на вказану кількість літрів
+  refuellingNumberOfLitres(litre) {
+    if (this.tankSize - this.numberOfLitresAvailable > 0 && this.numberOfLitresAvailable + litre <= this.tankSize) {
+      this.numberOfLitresAvailable += litre
+      console.log(`В баку тепер ${this.numberOfLitresAvailable}`)
+    } else {
+      console.log(`Можна залити ${this.tankSize - this.numberOfLitresAvailable}`)
+    }
+  }
+  // Виведення кількості пасажирів
+  displayingNumberOfPassengers() {
+    console.log(`Кількість пасажирів: ${this.numberOfPassengers}`)
+  }
+  // Додавання пасажирів
+  addingPassengers(passenger) {
+    if (this.numberOfPassengers + passenger <= this.numberOfSeats) {
+      this.numberOfPassengers += passenger
+    }
+    return this.numberOfPassengers
+  }
+
+  // Висадка пасажирів
+  disembarkingPassengers(passenger) {
+    if (this.numberOfPassengers > 0 && this.numberOfPassengers >= passenger) {
+      this.numberOfPassengers -= passenger
+    }
+    return this.numberOfPassengers
+  }
+}
+let autoAudi = new Auto('Audi', 40, 20, 5, 2)
+autoAudi.refuellingNumberOfLitres(1)
+autoAudi.refuellingNumberOfLitres(9)
+autoAudi.refuellingNumberOfLitres(1)
+autoAudi.refuellingNumberOfLitres(11)
+
+autoAudi.displayingNumberOfPassengers()
+autoAudi.addingPassengers(2)
+autoAudi.displayingNumberOfPassengers()
+autoAudi.disembarkingPassengers(3)
+autoAudi.displayingNumberOfPassengers()
+/* Задача 3. 
+Розробити клас MultChecker для перевірки таблиці множення
+
+Поля -  Число, яке перевіряємо (наприклад, перевірка частини таблиці множення на 7)
+        Кількість правильних відповідей
+        Кількість неправильних відповідей
+Методи -  Генерування прикладу (метод випадковим чином визначає друге число, перше число фіксоване)
+          Перевірка правильності вказаної відповіді
+          render - виведення інформації про тестування на екран */
