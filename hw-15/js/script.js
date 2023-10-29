@@ -159,3 +159,40 @@ autoAudi.displayingNumberOfPassengers()
 Методи -  Генерування прикладу (метод випадковим чином визначає друге число, перше число фіксоване)
           Перевірка правильності вказаної відповіді
           render - виведення інформації про тестування на екран */
+
+class MultChecker {
+  constructor(numberCheck) {
+    this.numberCheck = numberCheck
+    this.countTrue = 0
+    this.countFalse = 0
+    this.randomValue = 0
+  }
+  generateExam() {
+    this.randomValue = 1 + Math.floor(Math.random() * (10 - 1 + 1))
+    return `Чому дорівнює добуток? ${this.numberCheck} * ${this.randomValue}`
+  }
+  checkTask(answer) {
+    let res = this.numberCheck * this.randomValue
+
+    if (res === answer) {
+      this.countTrue++
+      return 'Правильно'
+    } else {
+      this.countFalse++
+      return 'Неправильно'
+    }
+  }
+  render() {
+    console.log(`Правильні відповіді: ${this.countTrue}, Неправильні відповіді: ${this.countFalse}`)
+  }
+}
+
+const checker = new MultChecker(5)
+const question = checker.generateExam()
+console.log(question)
+
+const answer = 25
+const result = checker.checkTask(answer)
+console.log(result)
+
+checker.render()
