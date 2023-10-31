@@ -1,22 +1,3 @@
-/*
-Задача 4. Розробити клас Baner
-Поля
-Масив об’єктів ( графічних зображень та посилань на сайти)
-методи
-Метод випадкового вибору об’єкта (графічного зображення та посилання)
-Метод виведення випадкового банера
-
-Задача 5. Розробити клас «Керівник танців»
-Поля
-Масив імен хлопців
-Масив імен дівчат
-Методи
-Метод випадкового вибору імені хлопця
-Метод випадкового вибору імені дівчини
-Метод виведення пари для танців
-Метод run , який ініціює через кожні 5 секунд виведення нової пари для танців
-*/
-
 /* Задача 0. 
 Дано два об’єкта. Обидва містять масив цілих чисел. 
 При цьому у одному з них є функція знаходження суми, а у іншому + 
@@ -196,3 +177,103 @@ const result = checker.checkTask(answer)
 console.log(result)
 
 checker.render()
+/* Задача 4. Розробити клас Baner
+
+Поля -  Масив об’єктів ( графічних зображень та посилань на сайти)
+Методи -  Метод випадкового вибору об’єкта (графічного зображення та посилання)
+          Метод виведення випадкового банера */
+
+const objImg = [
+  {
+    name: 'Google',
+    link: 'https://www.google.com',
+    img: 'img/1.jpg',
+  },
+  {
+    name: 'Facebook',
+    link: 'https://www.facebook.com',
+    img: 'img/2.jpg',
+  },
+  {
+    name: 'Twitter',
+    link: 'https://twitter.com',
+    img: 'img/3.jpg',
+  },
+  {
+    name: 'YouTube',
+    link: 'https://www.youtube.com',
+    img: 'img/4.jpg',
+  },
+]
+class Baner {
+  // Поля(властивості)
+  constructor(imgObj) {
+    this.imgObj = imgObj
+  }
+  // Методи (дії)
+  randSearch() {
+    return Math.floor(Math.random() * this.imgObj.length)
+  }
+  showBaner() {
+    let showRes = this.imgObj[this.randSearch()]
+    const divTask1 = document.querySelector('.main__task1')
+    divTask1.innerHTML = `<p>  <a href="${showRes.link}"> ${showRes.name}</a></p>
+    <img src="${showRes.img}">`
+    return divTask1
+  }
+}
+const baner = new Baner(objImg)
+baner.showBaner()
+/*
+Задача 5. Розробити клас «Керівник танців»
+
+Поля -  Масив імен хлопців
+        Масив імен дівчат
+Методи -  Метод випадкового вибору імені хлопця
+          Метод випадкового вибору імені дівчини
+          Метод виведення пари для танців
+          Метод run , який ініціює через кожні 5 секунд виведення нової пари для танців
+*/
+
+const girl = ['Оля', 'Катя', 'Марина', 'Віра', 'Світлана', 'Настя', 'Анна', 'Оксана', 'Ірина']
+const boy = ['Ваня', 'Дмитро', 'Олег', 'Петро', 'Сергій', 'Іван', 'Микола', 'Андрій', 'Євген']
+class DanceDirector {
+  // Поля(властивості)
+  constructor(boy, girl) {
+    this.boy = boy
+    this.girl = girl
+  }
+  // Методи (дії)
+  randomNum(arr) {
+    return Math.floor(Math.random() * arr.length)
+  }
+  randBoy() {
+    let numBoy = this.boy[this.randomNum(this.boy)]
+    console.log(this.randomNum(this.boy))
+    console.log(numBoy)
+    return numBoy
+  }
+  randGirl() {
+    let numGirl = this.girl[this.randomNum(this.girl)]
+    console.log(this.randomNum(this.girl))
+    console.log(numGirl)
+    return numGirl
+  }
+  dance() {
+    let boy = this.randBoy()
+    let girl = this.randGirl()
+    const divTask2 = document.querySelector('.main__task2')
+    divTask2.innerHTML = `<h3>Пари для танців</h3>
+                          <div> ${boy} - ${girl}</div>
+                          `
+    return divTask2
+  }
+  run() {
+    setInterval(() => {
+      this.dance()
+    }, 5000)
+  }
+}
+
+let parDance = new DanceDirector(boy, girl)
+parDance.run()
