@@ -42,10 +42,12 @@ class TDate {
     this.incrMonth(Math.floor(this.day / 30))
     this.day = this.day % 30
   }
-
-  decrDay(valDay) {}
+  decrYear(valYear) {
+    if (this.year >= valYear) this.year = this.year - valYear
+  }
   decrMonth(valMonth) {}
-  decrYear(valYear) {}
+  decrDay(valDay) {}
+
   toString() {
     return `${this.day} : ${this.month} : ${this.year}`
   }
