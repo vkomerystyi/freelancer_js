@@ -29,19 +29,29 @@ class TDate {
     this.month = initMonth
     this.year = initYear
   }
-  incrDay(valDay) {
-    this.day = (this.day + valDay) % 30
+  incrYear(valYear) {
+    this.year = this.year + valYear
   }
-  incrMonth(valMonth) {}
-  incrYear(valYear) {}
+  incrMonth(valMonth) {
+    this.month = this.month + valMonth
+    this.incrYear(Math.floor(this.month / 12))
+    this.month = this.month % 12
+  }
+  incrDay(valDay) {
+    this.day = this.day + valDay
+    this.incrMonth(Math.floor(this.day / 30))
+    this.day = this.day % 30
+  }
+
   decrDay(valDay) {}
   decrMonth(valMonth) {}
   decrYear(valYear) {}
   toString() {
-    return `${this.day} - ${this.month} - ${this.year}`
+    return `${this.day} : ${this.month} : ${this.year}`
   }
 }
 
-let date1 = new TDate(3, 10)
+let d = new TDate(30, 1, 2023)
+d.incrDay(56)
 
-console.log(date1)
+console.log(d.toString())
