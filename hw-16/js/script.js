@@ -1,14 +1,11 @@
 /* 
 Самі вирішуйте які поля треба захищати і які коректні значення. 
 В усіх задача повинен бути toString!!!
-
-Задача 4. Створити клас TBankomat, який моделює роботу банкомата. Клас повинен містити поля для зберігання кількості купюр кожного із номіналів від 5 до 200 гривень. Реалізувати методи знаходження максимальної та мінімальної сум, які може видати банкомат, та метод зняття деякої суми.
  */
 /* Задача 1. Створити клас TDate для роботи із датами у форматі “день.місяць.рік”. 
 -   Дата представляється структурою із трьома полями. 
 -   Реалізувати методи збільшення/зменшення дати на певну кількість днів, місяців чи років. 
--   Введення та виведення дати реалізувати за допомогою методу  toString.
- */
+-   Введення та виведення дати реалізувати за допомогою методу  toString. */
 class TDate {
   constructor(initDay, initMonth, initYear) {
     this.day = initDay
@@ -166,3 +163,74 @@ console.log(firstCompany)
 document.write(firstCompany)
 firstCompany.services.getAvailableServices(2000, 120)
 firstCompany.branches.getBrancesInCity('London')
+/* Задача 4. Створити клас TBankomat, який моделює роботу банкомата. Клас повинен містити поля для зберігання кількості купюр кожного із номіналів від 5 до 200 гривень. Реалізувати методи знаходження максимальної та мінімальної сум, які може видати банкомат, та метод зняття деякої суми.
+ */
+class TBankomat {
+  #banknotes
+  constructor(banknktes) {
+    this.Banknotes = banknktes
+  }
+  get Banknotes() {
+    return this.#banknotes
+  }
+  set Banknotes(value) {
+    this.#banknotes = value
+  }
+  minSum() {
+    let res = +Infinity
+    for (const el of this.Banknotes) {
+      if (el.Nominal < res) res = el.Nominal
+    }
+    return res
+  }
+  maxSum() {
+    return this.Banknotes.reduce((prevRes, el) => prevRes + el.Quantity * el.Nominal, 0)
+  }
+  withdrawalMoney(value) {
+    if (this.maxSum() - value < 1) throw new Error('Мало грошей')
+    for (let i = 0; i < this.Banknotes.length; i++) {
+      while (value >= this.Banknotes[i].Nominal && this.Banknotes[i].Quantity > 0) {
+        value -= this.Banknotes[i].Nominal
+        this.Banknotes[i].Quantity = this.Banknotes[i].Quantity - 1
+      }
+    }
+  }
+}
+class Banknote {
+  #quantity
+  #nominal
+  constructor(quantity, nominal) {
+    this.Quantity = quantity
+    this.Nominal = nominal
+  }
+  get Quantity() {
+    return this.#quantity
+  }
+  set Quantity(value) {
+    if (value < 0) throw new Error('error quantity')
+    this.#quantity = value
+  }
+  get Nominal() {
+    return this.#nominal
+  }
+  set Nominal(value) {
+    if (value < 5 && value > 200) throw new Error('error nominal')
+    this.#nominal = value
+  }
+}
+const banknoteValue = [
+  new Banknote(10, 200),
+  new Banknote(100, 100),
+  new Banknote(30, 50),
+  new Banknote(50, 20),
+  new Banknote(120, 10),
+  new Banknote(10, 5),
+]
+
+let t = new TBankomat(banknoteValue)
+console.log(t.minSum())
+console.log(t.maxSum())
+console.log(t.Banknotes)
+t.withdrawalMoney(15050)
+console.log(t.maxSum())
+console.log(t.Banknotes)
