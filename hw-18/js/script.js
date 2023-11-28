@@ -52,8 +52,7 @@ function countAge(userYears) {
 printUserAge('userDate', 'userAge')
  */
 
-let wishesAll = ['love', 'money', 'peace', 'victory', 'luck']
-
+/* 
 function randomIndex(arr) {
   let randInx = Math.floor(Math.random() * arr.length)
   let wish = arr[randInx]
@@ -76,3 +75,47 @@ window.onload = function () {
   app.append(wishes2)
   app.append(wishes3)
 }
+ */
+/* let wishesAll = ['love', 'money', 'peace', 'victory', 'luck']
+
+function getRandom(minV, maxV) {
+  return minV + Math.floor(Math.random() * (maxV - minV + 1))
+}
+
+function getWish(arr) {
+  for (let i = 0; i < 3; i++) {
+    let index = getRandom(0, arr.length - 1)
+    let div = document.createElement('div')
+    div.innerHTML = arr[index]
+    arr.splice(index, 1)
+    const app = document.getElementById('wish-app')
+    app.append(div)
+  }
+}
+getWish(wishesAll)
+ */
+const task5 = document.querySelector('.main__task5')
+
+function getRandom(minV, maxV) {
+  return minV + Math.floor(Math.random() * (maxV - minV + 1))
+}
+
+function createTableUser(row, col, parent, minV, maxV) {
+  let table = document.createElement('table')
+  table.style.cssText = 'border: 8px double black;'
+
+  for (let i = 0; i < row; i++) {
+    let tr = document.createElement('tr')
+    for (let j = 0; j < col; j++) {
+      let td = document.createElement('td')
+      td.style.border = '2px solid grey'
+      td.style.padding = '10px'
+      td.innerHTML = getRandom(minV, maxV)
+      tr.append(td)
+    }
+    table.append(tr)
+  }
+  parent.append(table)
+}
+
+createTableUser(4, 4, task5, 1, 9)
