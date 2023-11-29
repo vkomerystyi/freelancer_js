@@ -94,7 +94,7 @@ function getWish(arr) {
 }
 getWish(wishesAll)
  */
-const task5 = document.querySelector('.main__task5')
+/* const task5 = document.querySelector('.main__task5')
 
 function getRandom(minV, maxV) {
   return minV + Math.floor(Math.random() * (maxV - minV + 1))
@@ -119,3 +119,37 @@ function createTableUser(row, col, parent, minV, maxV) {
 }
 
 createTableUser(4, 4, task5, 1, 9)
+ */
+function createTable() {
+  let inputBNumber = parseInt(document.getElementById('count__number').value)
+  let table = document.createElement('table')
+  document.querySelector('.table__wrapper').prepend(table)
+  let tr = document.createElement('tr')
+  table.prepend(tr)
+  for (let i = 0; i < inputBNumber; i++) {
+    let td = document.createElement('td')
+    let input = document.createElement('input')
+    td.prepend(input)
+    input.classList.add('for__sum')
+    tr.prepend(td)
+  }
+  let button = document.createElement('button')
+  button.classList.add('aver__btn')
+  button.innerText = 'Get sum'
+  document.querySelector('.table__wrapper').after(button)
+  document.querySelector('.aver__btn').onclick = getAverage
+}
+
+function getAverage() {
+  let sumItem = document.querySelectorAll('.for__sum')
+  let sum = 0
+  for (const item of sumItem) {
+    sum += parseFloat(item.value)
+  }
+  let average = sum / sumItem.length
+  let div = document.createElement('div')
+  div.innerText = `The average number : ${average.toFixed(2)}`
+  document.querySelector('.aver__btn').after(div)
+}
+
+document.getElementById('create__table').onclick = createTable
