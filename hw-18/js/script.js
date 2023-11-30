@@ -1,4 +1,5 @@
-/* let buttons = document.querySelectorAll('.btn')
+/* Task1 */
+let buttons = document.querySelectorAll('.btn')
 
 for (const button of buttons) {
   button.onclick = () => {
@@ -23,8 +24,8 @@ for (const button of buttons) {
     }
   }
 }
- */
-/* function currencyConverter(dollarRate = 39, euroRate = 40) {
+/* Task2 */
+function currencyConverter(dollarRate = 39, euroRate = 40) {
   document.getElementById('btnConvert').onclick = function () {
     let sumGrn = parseFloat(document.getElementById('sumGrn').value)
     division('sumEuro', sumGrn, euroRate)
@@ -36,8 +37,8 @@ function division(idSelector, sum, rate) {
   document.getElementById(idSelector).value = sum / rate
 }
 currencyConverter()
- */
-/* function printUserAge(idUserDate, idUserAge) {
+/* Task3 */
+function printUserAge(idUserDate, idUserAge) {
   let userYears = document.getElementById(idUserDate)
   userYears.oninput = function () {
     let userYearsValue = parseInt(userYears.value)
@@ -50,10 +51,10 @@ function countAge(userYears) {
   return currentYear - userYears
 }
 printUserAge('userDate', 'userAge')
- */
 
-/* 
-function randomIndex(arr) {
+/* Task4 */
+
+/* function randomIndex(arr) {
   let randInx = Math.floor(Math.random() * arr.length)
   let wish = arr[randInx]
   return wish
@@ -74,9 +75,9 @@ window.onload = function () {
   app.append(wishes1)
   app.append(wishes2)
   app.append(wishes3)
-}
- */
-/* let wishesAll = ['love', 'money', 'peace', 'victory', 'luck']
+} */
+
+let wishesAll = ['love', 'money', 'peace', 'victory', 'luck']
 
 function getRandom(minV, maxV) {
   return minV + Math.floor(Math.random() * (maxV - minV + 1))
@@ -93,8 +94,8 @@ function getWish(arr) {
   }
 }
 getWish(wishesAll)
- */
-/* const task5 = document.querySelector('.main__task5')
+/* Task5 */
+const task5 = document.querySelector('.main__task5')
 
 function getRandom(minV, maxV) {
   return minV + Math.floor(Math.random() * (maxV - minV + 1))
@@ -119,7 +120,7 @@ function createTableUser(row, col, parent, minV, maxV) {
 }
 
 createTableUser(4, 4, task5, 1, 9)
- */
+/* Task6 */
 function createTable() {
   let inputBNumber = parseInt(document.getElementById('count__number').value)
   let table = document.createElement('table')
@@ -153,3 +154,31 @@ function getAverage() {
 }
 
 document.getElementById('create__table').onclick = createTable
+/* Task7 */
+
+function getFoodSum() {
+  let footList = document.querySelectorAll('.food__option')
+  let foodSum = 0
+  for (const option of footList) {
+    if (option.checked) foodSum += parseFloat(option.value)
+  }
+  return foodSum
+}
+
+function getGideSum() {
+  let gideList = document.querySelectorAll('input[name="gide"]')
+  let gideSum = 0
+  for (const gide of gideList) {
+    if (gide.checked) gideSum = parseFloat(gide.value)
+  }
+  return gideSum
+}
+
+function totalValue() {
+  const transportSum = parseFloat(document.getElementById('car').value)
+  let totalSum = getFoodSum() + getGideSum() + transportSum
+  let p = document.createElement('p')
+  p.innerText = `Total sum is ${totalSum}`
+  document.getElementById('button').after(p)
+}
+document.getElementById('button').onclick = totalValue
