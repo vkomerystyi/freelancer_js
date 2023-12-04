@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .min {
+        background-color: red;
+      }
+      .max {
+        background-color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container"></div>
+    <script>
+      class RandomColoredTable {
+        constructor(rowsCount, columnsCount, minValue, maxValue) {
+          this.rowsCount = rowsCount
+          this.columnsCount = columnsCount
+          this.minValue = minValue
+          this.maxValue = maxValue
+          this.dataArray = this.getRandomArray()
+        }
+        getRandomNumber() {
+          return this.minValue + Math.floor(Math.random() * (this.maxValue - this.minValue + 1))
+        }
+        getRandomArray() {
+          const arr = []
+          for (let r = 0; r < this.rowsCount; r++) {
+            let row = []
+            for (let c = 0; c < this.columnsCount; c++) {
+              row.push(this.getRandomNumber())
+            }
+            arr.push(row)
+          }
+          return arr
+        }
+        get maxNumber() {
+          return Math.max(...this.dataArray.flat())
+        }
+        get minNumber() {
+          return Math.min(...this.dataArray.flat())
+        }
+        render(containerId) {
+          const table = document.createElement('table')
+          for (const row of this.dataArray) {
+            const tr = document.createElement('tr')
+            for (const col of row) {
+              const td = document.createElement('td')
+              td.innerText = col
+              /* if (col === this.minNumber) {
+                td.style.backgroundColor = 'red'
+              }
+              if (col === this.maxNumber) {
+                td.style.backgroundColor = 'green'
+              } */
+              if (col === this.minNumber) {
+                td.className = 'min'
+              }
+              if (col === this.maxNumber) {
+                td.className = 'max'
+              }
+
+              tr.append(td)
+            }
+            table.append(tr)
+          }
+          /* document.getElementById(containerId).append(table) */
+          const containerElement = document.getElementById(containerId)
+          containerElement.append(table)
+        }
+      }
+
+      window.onload = function () {
+        let t1 = new RandomColoredTable(3, 4, 1, 9)
+        t1.render('container')
+      }
+    </script>
+  </body>
+</html>
