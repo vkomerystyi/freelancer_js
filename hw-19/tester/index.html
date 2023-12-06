@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      td,
+      th {
+        border: 2px solid black;
+      }
+
+      li {
+        width: 150px;
+        border: 2px solid gray;
+        cursor: pointer;
+      }
+      li:hover {
+        background-color: gray;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container"></div>
+
+    <script>
+      class Tester {
+        constructor(questionList) {
+          this.questionList = questionList
+          this.currentQuestion = null
+          this.history = []
+        }
+
+        getRandomQuestion() {
+          const randomIndex = Math.floor(Math.random() * this.questionList.length)
+
+          const questionObj = this.questionList[randomIndex]
+
+          this.questionList.splice(randomIndex, 1)
+          return questionObj
+        }
+
+        optionClick(optionId) {
+          alert(optionId == this.currentQuestion.correctAnswerId)
+
+          const userAnswer = this.currentQuestion.options.find((item) => item.id == optionId).text
+          const correctAnswer = this.currentQuestion.options.find(
+            (item) => item.id === this.currentQuestion.correctAnswerId
+          ).text
+
+          this.history.push({
+            question: this.currentQuestion.question,
+            userAnswer,
+            correctAnswer,
+          })
+          this.next()
+        }
+        getTableRow(dataArray, elTag = 'td') {
+          const tr = document.createElement('tr')
+          for (const el of dataArray) {
+            const td = document.createElement(elTag)
+            td.innerText = el
+            tr.append(td)
+          }
+          return tr
+        }
+        renderResultTable() {
+          const table = document.createElement('table')
+          const header = this.getTableRow(['Запитання', 'Відповідь', 'Правильна відповідь'], 'th')
+          table.append(header)
+
+          for (const testRes of this.history) {
+            const row = this.getTableRow([testRes.question, testRes.userAnswer, testRes.correctAnswer])
+
+            table.append(row)
+          }
+
+          return table
+        }
+
+        renderQuestionForm() {
+          const questionContainer = document.createElement('div')
+          questionContainer.className = 'question-container'
+
+          const questionTextContainer = document.createElement('h3')
+          questionTextContainer.innerText = this.currentQuestion.question
+          questionContainer.append(questionTextContainer)
+
+          const optionsContainer = document.createElement('ol')
+
+          for (const opt of this.currentQuestion.options) {
+            const li = document.createElement('li')
+            li.innerText = opt.text
+
+            li.onclick = this.optionClick.bind(this, opt.id)
+
+            optionsContainer.append(li)
+          }
+
+          questionContainer.append(optionsContainer)
+          return questionContainer
+        }
+
+        render(containerId) {
+          const testerContainer = document.createElement('div')
+
+          this.questionFormContainer = document.createElement('div')
+          this.historyContainer = document.createElement('div')
+
+          testerContainer.append(this.questionFormContainer)
+          testerContainer.append(this.historyContainer)
+
+          const targetContainer = document.getElementById(containerId)
+          targetContainer.append(testerContainer)
+
+          this.next()
+        }
+        next() {
+          if (this.questionList.length) {
+            this.currentQuestion = this.getRandomQuestion()
+            this.questionFormContainer.innerHTML = ''
+            this.questionFormContainer.append(this.renderQuestionForm())
+          } else {
+            this.questionFormContainer.innerHTML = 'Тестування закінчено'
+          }
+          this.historyContainer.innerHTML = ''
+          this.historyContainer.append(this.renderResultTable())
+        }
+      }
+
+      const testSet = [
+        {
+          question: 'Де найкращий шовдарь?',
+          options: [
+            {
+              id: 1,
+              text: 'Закарпаття',
+            },
+            {
+              id: 2,
+              text: 'Чернівці',
+            },
+            {
+              id: 3,
+              text: 'Львів',
+            },
+          ],
+          correctAnswerId: 1,
+        },
+        {
+          question: 'Хто є найбільш надійною людиною?',
+          options: [
+            {
+              id: 1,
+              text: 'Ілон Маск',
+            },
+            {
+              id: 2,
+              text: 'Білл Гейтс',
+            },
+            {
+              id: 3,
+              text: 'Сусід Іван',
+            },
+          ],
+          correctAnswerId: 3,
+        },
+        {
+          question: 'Який транспортний засіб є найшвидшим?',
+          options: [
+            {
+              id: 1,
+              text: 'Ракета Ілона Маска',
+            },
+            {
+              id: 2,
+              text: 'Гіперзвукова ракета останньої моделі',
+            },
+            {
+              id: 3,
+              text: 'Маршрутка сусіда Івана',
+            },
+          ],
+          correctAnswerId: 3,
+        },
+        {
+          question: 'Який з напоїв є найбільш цінним ?',
+          options: [
+            {
+              id: 1,
+              text: 'Джин з 10 роками витримки',
+            },
+            {
+              id: 2,
+              text: 'Настоянка сусіда Івана',
+            },
+            {
+              id: 3,
+              text: 'Вино з 25 роками витримки',
+            },
+          ],
+          correctAnswerId: 2,
+        },
+      ]
+
+      window.onload = function () {
+        const t1 = new Tester(testSet)
+        t1.render('container')
+      }
+    </script>
+  </body>
+</html>
