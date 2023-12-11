@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #container {
+        position: relative;
+      }
+      button {
+        position: absolute;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      class CrazyButton {
+        constructor(title) {
+          this.title = title
+        }
+        getRandomColor() {
+          const randomColorList = ['red', 'green', 'yellow']
+          const rantIndex = Math.floor(Math.random() * randomColorList.length)
+          return randomColorList[rantIndex]
+        }
+        onhover() {
+          this.btn.style.backgroundColor = this.getRandomColor()
+          const left = parseInt(this.btn.style.left) + 20 + 'px'
+          const top = parseInt(this.btn.style.top) + 20 + 'px'
+          this.btn.style.left = left
+          this.btn.style.top = top
+        }
+        onleave() {
+          this.btn.style.backgroundColor = 'gray'
+        }
+        render(containerId) {
+          this.btn = document.createElement('button')
+          this.btn.innerText = this.title
+
+          this.btn.onmouseover = this.onhover.bind(this)
+          this.btn.onmouseleave = this.onleave.bind(this)
+          this.btn.style.left = '100px'
+          this.btn.style.top = '100px'
+
+          const targetContainer = document.getElementById(containerId)
+          targetContainer.append(this.btn)
+        }
+      }
+
+      window.onload = function () {
+        const b1 = new CrazyButton('test')
+        b1.render('container')
+      }
+    </script>
+    <div id="container"></div>
+  </body>
+</html>
