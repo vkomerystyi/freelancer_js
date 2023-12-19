@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        width: 520px;
+        padding: 10px;
+        border: 1px solid green;
+        border-radius: 8px;
+      }
+      .container div {
+        height: 15px;
+      }
+      .item {
+        width: 500px;
+        margin-bottom: 5px;
+      }
+      .title {
+        width: 200px;
+        display: inline-block;
+      }
+      .value-container {
+        width: 300px;
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="dataContainer"></div>
+
+    <script>
+      class Diagram {
+        constructor(dataList, sectionColorList) {
+          this.dataList = dataList
+          this.sectionColorList = sectionColorList
+        }
+
+        getValueColor(value) {
+          const sectionLength = 100 / this.sectionColorList.length
+          const sectionNum = Math.ceil(value / sectionLength)
+          return this.sectionColorList[sectionNum - 1]
+        }
+
+        createItemElement({ title, value }) {
+          const container = document.createElement('div')
+          container.classList.add('item')
+
+          const titleContainer = document.createElement('div')
+          titleContainer.className = 'title'
+          titleContainer.innerText = title
+          container.append(titleContainer)
+
+          const valueContainer = document.createElement('div')
+          valueContainer.className = 'value-container'
+          const valueDiv = document.createElement('div')
+          valueDiv.style.width = `${value}%`
+          valueDiv.style.backgroundColor = this.getValueColor(value)
+          valueContainer.append(valueDiv)
+          container.append(valueContainer)
+
+          return container
+        }
+        render(targetSelector) {
+          const diagramContainer = document.createElement('div')
+          diagramContainer.className = 'container'
+
+          this.dataList.forEach((item) => {
+            const itemElement = this.createItemElement(item)
+            diagramContainer.append(itemElement)
+          })
+
+          document.querySelector(targetSelector).append(diagramContainer)
+        }
+      }
+
+      let sectionColorList = ['red', 'blue', 'green']
+      let dataList = [
+        { title: 'Ivan', value: 97 },
+        { title: 'Olga', value: 87 },
+        { title: 'Ivan', value: 57 },
+        { title: 'Petro', value: 37 },
+        { title: 'Ivan', value: 17 },
+      ]
+
+      window.onload = function () {
+        const d1 = new Diagram(dataList, sectionColorList)
+        d1.render('#dataContainer')
+      }
+    </script>
+  </body>
+</html>
